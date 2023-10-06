@@ -1,0 +1,7 @@
+{
+  "name": "entryflow-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
