@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+ 
+</ion-header>
+
+<ion-content [fullscreen]="true" >
+  
+  <div class="container-top animate__animated animate__lightSpeedInRight " >
+    <img alt="Silhouette of mountains" src="../../../assets/logo.png" class="logo"/>
+    <ion-text>
+      <p>Entryflow</p>
+    </ion-text>
+  </div>
+
+  <div class="container-middle-top animate__animated animate__lightSpeedInRight ">
+    <ion-text>
+      <h1>Inicio de sesión</h1>
+    </ion-text>
+    <ion-label>
+      <p>¡Hola! Qué gusto verte de nuevo.</p>
+    </ion-label>
+  </div>
+
+  <div class="container-middle-bottom animate__animated animate__lightSpeedInRight ">
+    <ion-list>
+      <ion-item>
+        <ion-input label="Correo electrónico" labelPlacement="stacked" placeholder="johndoe@gmail.com"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Contraseña" type="password" labelPlacement="stacked" placeholder="........."></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="container-btn-login">
+      <ion-button expand="block" color="primary" class="btn-login">Iniciar sesión</ion-button>
+    </div>
+  </div>
+
+  <div class="container-bottom animate__animated animate__lightSpeedInRight ">
+    <ion-text>
+      <p>¿No tienes una cuenta? <a href="/register">Regístrate</a></p>
+    </ion-text>
+    <ion-text>
+      <p>¿Olvidaste tu contraseña? <a href="/forgot-password">Recupérala</a></p>
+    </ion-text>
+  </div>
+</ion-content>
