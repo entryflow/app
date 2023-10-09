@@ -19,22 +19,29 @@ To quickly create various components in your Ionic project, you can use the `ion
 ### Creating a Page
 
 To generate a new page, run the following command:
+    
+    
+    ionic generate page page-name
 
-```shell
-ionic generate page page-name
-
-## Running Your Ionic Project
+### Running Your Ionic Project
 
 Once you have set up your Ionic project and completed any necessary configurations and component generation, you can run your project on a local development server or on a physical device. Here's how:
 
 ### Local Development Server
 
-To run your Ionic project on a local development server for testing in a web browser, use the following command:
+To run your Ionic project on a local development server for testing in a web browser, use the following command
 
-```shell
-ionic serve
-
+    ionic serve
 
 
 
-   
+## Opening Your Ionic Project in Android Studio
+
+If you're developing an Android application within your Ionic project or need to perform Android-specific tasks, you can open the Android part of your project in Android Studio. Here's how to do it:
+
+### Build Your Ionic Project for Android
+   Before opening your project in Android Studio, ensure that your Ionic project is built for the Android platform. Open your terminal and run:
+
+   ```shell
+   ionic build
+   npx cap open android
