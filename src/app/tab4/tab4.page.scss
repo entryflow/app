@@ -1,0 +1,29 @@
+.profileInfo{
+  position: absolute; top: 50px;
+}
+
+.profileButtons {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+}
+
+.profileButtonIcon{
+  position: absolute;
+  right: 10px;
+}
+
+.profileButton{
+  height: 80px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  size: large;
+}
+
+.profileButtonText{
+  position:absolute;
+  left: 10px;
+}

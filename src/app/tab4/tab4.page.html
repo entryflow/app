@@ -1,13 +1,79 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" mode="ios">
+
   <ion-toolbar>
+
     <ion-title>Mi perfil</ion-title>
+
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">tab4</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+<ion-content [fullscreen]="true" mode="ios">
+
+     <!--informacion del perfil del usuario-->
+      <div class="animate__animated animate__backInUp">
+
+      <div class="profileInfo">
+
+        <!--imagen de perfil-->
+        <div text-center>
+          <p align="center">
+            <ion-img
+            style="width: 40%; margin-top: 50px;"
+            src="https://ionicframework.com/docs/img/demos/avatar.svg"
+            alt="The Wisconsin State Capitol building in Madison, WI at night">
+            </ion-img>
+          </p>
+        </div>
+
+      <!--carta de informacion del perfil-->
+        <div class="card-body">
+          <div class="user-meta ion-text-center">
+            <h1 class="userName">John Doe Ipsum</h1>
+            <h5 class="company">Coca cola Company</h5>
+          </div>
+        </div>
+
+        </div>
+      </div>
+
+
+      <!--botones de la pantalla del perfil-->
+       <div class="profileButtons" style="padding: 11px;" mode="ios">
+
+        <div class = "animate__animated animate__backInUp">
+
+          <ion-button
+          class="profileButton"
+          fill="outline"
+          expand="block"
+          (click)="onModalEdit()"
+          >
+          <ion-icon class="profileButtonIcon" slot="end" name="create-outline"></ion-icon>
+          <div class="profileButtonText">
+            Editar perfil
+          </div>
+          </ion-button>
+
+        </div>
+
+        <div class = "animate__animated animate__backInUp">
+
+          <ion-button
+          class="profileButton"
+          fill="outline"
+          expand="block"
+          (click)="onAlert()"
+          >
+          <ion-icon class="profileButtonIcon" slot="end" name="log-out-outline"></ion-icon>
+          <div class="profileButtonText">
+            Cerrar sesión
+          </div>
+          </ion-button>
+
+        </div>
+
+      </div>
+
 </ion-content>
