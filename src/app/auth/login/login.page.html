@@ -1,11 +1,11 @@
 <ion-header [translucent]="true">
- 
+
 </ion-header>
 
-<ion-content [fullscreen]="true" >
-  
-  <div class="container-top animate__animated animate__lightSpeedInRight " >
-    <img alt="Silhouette of mountains" src="../../../assets/logo.png" class="logo"/>
+<ion-content [fullscreen]="true">
+
+  <div class="container-top animate__animated animate__lightSpeedInRight ">
+    <img alt="Silhouette of mountains" src="../../../assets/logo.png" class="logo" />
     <ion-text>
       <p>Entryflow</p>
     </ion-text>
@@ -19,20 +19,25 @@
       <p>¡Hola! Qué gusto verte de nuevo.</p>
     </ion-label>
   </div>
-
-  <div class="container-middle-bottom animate__animated animate__lightSpeedInRight ">
-    <ion-list>
-      <ion-item>
-        <ion-input label="Correo electrónico" labelPlacement="stacked" placeholder="johndoe@gmail.com"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input label="Contraseña" type="password" labelPlacement="stacked" placeholder="........."></ion-input>
-      </ion-item>
-    </ion-list>
-    <div class="container-btn-login">
-      <ion-button expand="block" color="primary" class="btn-login">Iniciar sesión</ion-button>
+  <form [formGroup]="credentials" (ngSubmit)="login()">
+    <div class="container-middle-bottom animate__animated animate__lightSpeedInRight ">
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked" color="primary">Correo electrónico</ion-label>
+          <ion-input type="text" placeholder="johndoe@gmail.com" inputmode="email"  formControlName="email"></ion-input>
+          <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Por favor ingresa un correo electrónico</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" color="primary">Contraseña</ion-label>
+          <ion-input type="password" placeholder="........." formControlName="password"></ion-input>
+          <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Por favor ingresa una contraseña</ion-note>
+        </ion-item>
+      </ion-list>
+      <div class="container-btn-login">
+        <ion-button expand="block" color="primary" class="btn-login" mode="ios" type="submit" [disabled]="!credentials.valid">Iniciar sesión</ion-button>
+      </div>
     </div>
-  </div>
+  </form>
 
   <div class="container-bottom animate__animated animate__lightSpeedInRight ">
     <ion-text>

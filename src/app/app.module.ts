@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,11 +12,11 @@ import { ModalCreateEmployeeComponent } from './components/modal-create-employee
 import { ModalEditEmployeeComponent } from './components/modal-edit-employee/modal-edit-employee.component';
 import { ModalEditProfileComponent } from './components/modal-edit-profile/modal-edit-profile.component';
 
-
 @NgModule({
   declarations: [AppComponent,ModalCreateEmployeeComponent,ModalEditEmployeeComponent,ModalEditProfileComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,ReactiveFormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
+
 export class AppModule {}
