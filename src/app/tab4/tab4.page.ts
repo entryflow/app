@@ -3,7 +3,6 @@ import { ModalController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { ModalEditProfileComponent } from '../components/modal-edit-profile/modal-edit-profile.component';
 
-
 @Component({
   selector: 'app-tab4',
   templateUrl: './tab4.page.html',
@@ -11,13 +10,15 @@ import { ModalEditProfileComponent } from '../components/modal-edit-profile/moda
 })
 export class Tab4Page implements OnInit {
 
-  constructor(private alertController:AlertController,private modalController:ModalController) {  }
+  constructor(private alertController:AlertController,private modalController:ModalController)
+  {  }
 
   ngOnInit() {
 
   }
 
   async onAlert(){
+
     const alert = await this.alertController.create({
       header: 'Cerrar sesión',
       subHeader: '',

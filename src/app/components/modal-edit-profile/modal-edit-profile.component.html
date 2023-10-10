@@ -1,39 +1,63 @@
 <ion-header>
+
   <ion-toolbar>
+
     <ion-buttons slot="start">
       <ion-button (click)="cancel()" [strong]="true" color="danger">Cancelar</ion-button>
     </ion-buttons>
     <ion-title>Editar perfil</ion-title>
+
     <ion-buttons slot="end">
       <ion-button (click)="confirm()" [strong]="true" color="success">Aceptar</ion-button>
     </ion-buttons>
+
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-item lines="none">
-    <ion-label position="stacked" color="primary">Foto de perfil</ion-label>
-    <ion-img
-    style="width: 40%; margin-top:8px;"
-    src="https://ionicframework.com/docs/img/demos/avatar.svg"
-    alt="The Wisconsin State Capitol building in Madison, WI at night">
-    </ion-img>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked" color="primary">Nombre</ion-label>
-    <ion-input type="text" placeholder="John" ></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked" color="primary">Apellido paterno</ion-label>
-    <ion-input type="text" placeholder="Doe" ></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked" color="primary">Apellido materno</ion-label>
-    <ion-input type="text" placeholder="Ipsum" ></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked" color="primary">Número de telefono</ion-label>
-    <ion-input type="number" placeholder="664373218" ></ion-input>
-  </ion-item>
+
+
+
+<ion-content class="ion-padding" [fullscreen]="true">
+
+  <div text-center>
+      <p align="center">
+        <ion-img
+        style="width: 40%; margin-top: 50px;"
+        src="https://ionicframework.com/docs/img/demos/avatar.svg"
+        alt="The Wisconsin State Capitol building in Madison, WI at night">
+        </ion-img>
+      </p>
+  </div>
+
+  <form [formGroup]="newProfileInfo">
+
+  <div text-center style="position: absolute; bottom: 100px; left: 60px;">
+
+    <ion-item>
+      <ion-label position="stacked" color="primary">Nombre</ion-label>
+      <ion-input type="text" placeholder="John" inputmode = "name" formControlName = "name"></ion-input>
+      <ion-note slot="error" *ngIf = "(name.dirty || name.touched) && name.invalid">Únicamente letras</ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked" color="primary">Apellido paterno</ion-label>
+      <ion-input type="text" placeholder="Doe"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked" color="primary">Apellido materno</ion-label>
+      <ion-input type="text" placeholder="Ipsum"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked" color="primary">Número de telefono</ion-label>
+      <ion-input placeholder="664373218"></ion-input>
+    </ion-item>
+
+  </div>
+
+  </form>
+
 
 </ion-content>

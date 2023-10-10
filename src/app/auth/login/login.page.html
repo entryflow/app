@@ -2,7 +2,7 @@
 
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" mode = "ios">
 
   <div class="container-top animate__animated animate__lightSpeedInRight ">
     <img alt="Silhouette of mountains" src="../../../assets/logo.png" class="logo" />
@@ -22,16 +22,19 @@
   <form [formGroup]="credentials" (ngSubmit)="login()">
     <div class="container-middle-bottom animate__animated animate__lightSpeedInRight ">
       <ion-list>
+
         <ion-item>
           <ion-label position="stacked" color="primary">Correo electrónico</ion-label>
           <ion-input type="text" placeholder="johndoe@gmail.com" inputmode="email"  formControlName="email"></ion-input>
           <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Por favor ingresa un correo electrónico</ion-note>
         </ion-item>
+
         <ion-item>
           <ion-label position="stacked" color="primary">Contraseña</ion-label>
           <ion-input type="password" placeholder="........." formControlName="password"></ion-input>
           <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Por favor ingresa una contraseña</ion-note>
         </ion-item>
+
       </ion-list>
       <div class="container-btn-login">
         <ion-button expand="block" color="primary" class="btn-login" mode="ios" type="submit" [disabled]="!credentials.valid">Iniciar sesión</ion-button>
@@ -47,4 +50,5 @@
       <p>¿Olvidaste tu contraseña? <a href="/forgot-password">Recupérala</a></p>
     </ion-text>
   </div>
+
 </ion-content>
