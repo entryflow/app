@@ -1,5 +1,5 @@
 <ion-header [translucent]="true" mode="ios">
-  <ion-toolbar >
+  <ion-toolbar>
     <ion-title>Administración de empleados</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="onModalCreate()"> <ion-icon name="add-outline"></ion-icon> </ion-button>
@@ -15,6 +15,9 @@
 
       <!--elemento de lista que al darle click muestra la informacion del usuario-->
       <ion-item (click)="onModalViewEmployeeInfo()">
+        <ion-avatar slot="start">
+          <img src="{{employee.avatar}}">
+        </ion-avatar>
         <ion-label>{{employee.name}} {{employee.middle_name}} {{employee.last_name}}</ion-label>
       </ion-item>
 
@@ -25,15 +28,13 @@
           <ion-icon name="create-outline" slot="icon-only"></ion-icon>
         </ion-item-option>
         <!--opcion de eliminar-->
-        <ion-item-option color="danger" (click)="onAlert(employee.id)">
+        <ion-item-option color="danger" (click)="onAlert(employee.id,employee.name,employee.middle_name,employee.last_name)">
           <ion-icon slot="icon-only" name="trash"></ion-icon>
         </ion-item-option>
-
       </ion-item-options>
-
-
+      
     </ion-item-sliding>
 
-
   </ion-list>
+
 </ion-content>

@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { AlertController,ModalController,LoadingController } from '@ionic/angular';
+import {
+  AlertController,
+  ModalController,
+  LoadingController,
+  ToastController,
+} from '@ionic/angular';
 import { ModalCreateEmployeeComponent } from '../components/modal-create-employee/modal-create-employee.component';
 import { ModalEditEmployeeComponent } from '../components/modal-edit-employee/modal-edit-employee.component';
 import { ModalEditProfileComponent } from '../components/modal-edit-profile/modal-edit-profile.component';
@@ -9,86 +14,95 @@ import { ApiService } from '../services/api.service';
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss']
+  styleUrls: ['tab3.page.scss'],
 })
-
 export class Tab3Page {
-  employees:any = [];
+  employees: any = [];
 
-  constructor(private alertController:AlertController,
-    private modalController:ModalController,
-    private api:ApiService,
-    private LoadingController:LoadingController
-    ) {}
+  constructor(
+    private alertController: AlertController,
+    private modalController: ModalController,
+    private api: ApiService,
+    private LoadingController: LoadingController
+  ) {}
 
-    async ionViewWillEnter(){
-      const loading = await this.LoadingController.create({
-        message:'Cargando...',
-        mode:'ios'
-      }).then(async (loadingElement)=>{
-        loadingElement.present();
-        this.refreshEmployees();
+  async ionViewWillEnter() {
+    const loading = await this.LoadingController.create({
+      message: 'Cargando...',
+      mode: 'ios',
+    }).then(async (loadingElement) => {
+      loadingElement.present();
+      this.refreshEmployees();
 
-        loadingElement.dismiss();
-      });
-    }
-    async refreshEmployees(){
-      this.employees = await this.api.getEmployees(1);
-    }
+      loadingElement.dismiss();
+    });
+  }
+
+  async refreshEmployees() {
+    this.employees = await this.api.getEmployees(1);
+  }
+
   //Funcion para mostrar alert
-  async onAlert(id:any){
+  async onAlert(id: any,name: any, middle_name: any, last_name: any) {
     const alert = await this.alertController.create({
       header: 'Eliminar empleado',
       subHeader: '',
-      message: '¿Estas seguro de eliminar el empleado John Doe Ipsum?',
-      buttons: [{
-        text: 'Cancelar',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked');
-        },
-      },
+      message: '¿Estas seguro de eliminar a ' + name + ' ' + middle_name + ' ' + last_name + '',
+      buttons: [
         {
-        text: 'Aceptar',
-        handler: async () => {
-          this.api.deleteEmployees(id);
-          this.refreshEmployees();
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          },
         },
-      }],
-      mode:'ios',
-
+        {
+          text: 'Aceptar',
+          handler: async () => {
+            this.api.deleteEmployees(id);
+            await this.refreshEmployees();
+          },
+        },
+      ],
+      mode: 'ios',
     });
 
     await alert.present();
   }
 
   //Funcion para mostrar modal
-  async onModalCreate(){
+  async onModalCreate() {
     const modal = await this.modalController.create({
       component: ModalCreateEmployeeComponent,
-      mode:'ios'
+      animated: true,
+      mode: 'ios',
     });
+    await modal.present();
 
-    return await modal.present();
+    const { data } = await modal.onWillDismiss();
+
+    if (data) {
+      await this.api.createEmployees(data);
+      this.refreshEmployees();
+    }
+
   }
 
-  async onModalEdit(id:any){
+  async onModalEdit(id: any) {
     const modal = await this.modalController.create({
       component: ModalEditEmployeeComponent,
-      mode:'ios'
+      animated: true,
+      mode: 'ios',
     });
-
-
 
     return await modal.present();
   }
 
-  async onModalViewEmployeeInfo(){
+  async onModalViewEmployeeInfo() {
     const modal = await this.modalController.create({
       component: ModalViewEmployeeInfoComponent,
-      mode:'ios'
+      mode: 'ios',
     });
     return await modal.present();
   }
-
 }
