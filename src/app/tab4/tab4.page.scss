@@ -1,19 +1,13 @@
 .profileInfo{
-  position: absolute;
   top: 40px;
 }
 
 .profileButtons {
-  position: absolute;
-  bottom: 50px;
-  left: 0;
-  right: 0;
-  margin: auto;
-
+position: relative;
 }
 
 .profileButtonIcon{
-  position: absolute;
+  position:absolute;
   right: 10px;
 }
 

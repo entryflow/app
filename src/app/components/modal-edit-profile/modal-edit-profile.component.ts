@@ -20,7 +20,7 @@ export class ModalEditProfileComponent implements OnInit {
     name: ['', [Validators.required, Validators.pattern('[A-Za-z ]+$')]],
     first_name: ['', [Validators.required, Validators.pattern('[A-Za-z ]+$')]],
     second_name: ['', [Validators.required, Validators.pattern('[A-Za-z ]+$')]],
-    phone_number: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
+    phoneNumber: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
 
   });
 
@@ -33,6 +33,18 @@ export class ModalEditProfileComponent implements OnInit {
 
   get name() {
     return this.newProfileInfo.controls.name;
+  }
+
+  get first_name() {
+    return this.newProfileInfo.controls.first_name;
+  }
+
+  get second_name() {
+    return this.newProfileInfo.controls.second_name;
+  }
+
+  get phoneNumber() {
+    return this.newProfileInfo.controls.phoneNumber;
   }
 
   cancel() {

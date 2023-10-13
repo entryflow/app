@@ -32,8 +32,6 @@
 
   <form [formGroup]="newProfileInfo">
 
-  <div text-center style="position: absolute; bottom: 100px; left: 60px;">
-
     <ion-item>
       <ion-label position="stacked" color="primary">Nombre</ion-label>
       <ion-input type="text" placeholder="John" inputmode = "name" formControlName = "name"></ion-input>
@@ -42,22 +40,37 @@
 
     <ion-item>
       <ion-label position="stacked" color="primary">Apellido paterno</ion-label>
-      <ion-input type="text" placeholder="Doe"></ion-input>
+      <ion-input type="text" placeholder="Doe" inputmode="first_name" formControlName="first_name"></ion-input>
+      <ion-note slot="error" *ngIf = "(first_name.dirty || first_name.touched) && first_name.invalid">Únicamente letras</ion-note>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked" color="primary">Apellido materno</ion-label>
-      <ion-input type="text" placeholder="Ipsum"></ion-input>
+
+      <ion-input
+      type="text"
+      placeholder="Ipsum"
+      inputmode="second_name"
+      formControlName="second_name"></ion-input>
+
+      <ion-note slot="error" *ngIf = "(second_name.dirty || second_name.touched) && second_name.invalid">Únicamente letras</ion-note>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked" color="primary">Número de telefono</ion-label>
-      <ion-input placeholder="664373218"></ion-input>
+
+      <ion-input
+      type="tel"
+      placeholder="664373218"
+      inputmode="phoneNumber"
+      formControlName="phoneNumber"
+      [counter]="true"
+      maxlength="10"></ion-input>
+
+      <ion-note slot="error" *ngIf = "(phoneNumber.dirty || phoneNumber.touched) && phoneNumber.invalid">Max. 10 digitos</ion-note>
+
     </ion-item>
 
-  </div>
-
   </form>
-
 
 </ion-content>

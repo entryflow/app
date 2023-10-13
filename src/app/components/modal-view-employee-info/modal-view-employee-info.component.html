@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()" [strong]="true" color="danger">Cancelar</ion-button>
+    </ion-buttons>
+    <ion-title>informacion de empleado</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true" color="success">Aceptar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+
+
+
+
+  <!--FOTO DE PERFIL-->
+  <ion-item lines="none">
+    <ion-label position="stacked" color="primary">Foto de perfil</ion-label>
+    <ion-img
+    style="width: 40%; margin-top:8px;"
+    src="https://ionicframework.com/docs/img/demos/avatar.svg"
+    alt="The Wisconsin State Capitol building in Madison, WI at night">
+    </ion-img>
+  </ion-item>
+
+  <!--NOMBRE DEL USUARIO-->
+  <ion-item>
+    <ion-label position="stacked" color="primary">Nombre</ion-label>
+    <ion-input labelPlacement="fixed" type="text">Juan Jose</ion-input>
+  </ion-item>
+
+  <!--APELLIDO PATERNO-->
+  <ion-item>
+    <ion-label position="stacked" color="primary">Apellido paterno</ion-label>
+    <ion-input type="text" placeholder="Doe" ></ion-input>
+  </ion-item>
+
+  <!--AEPLLIDO MATERNO-->
+  <ion-item>
+    <ion-label position="stacked" color="primary">Apellido materno</ion-label>
+    <ion-input type="text" placeholder="Ipsum" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked" color="primary">Número de telefono</ion-label>
+    <ion-input type="number" placeholder="664373218" ></ion-input>
+  </ion-item>
+
+  <!--CORREO ELECTRONICO-->
+  <ion-item>
+    <ion-label position="stacked" color="primary">Correo electrónico</ion-label>
+    <ion-input type="text" placeholder="john.doe@gmail.com" ></ion-input>
+  </ion-item>
+
+  <!--NUMERO DE CONTROL-->
+  <ion-item>
+    <ion-label position="stacked" color="primary">Número de control</ion-label>
+    <ion-input type="text" placeholder="2021859" ></ion-input>
+  </ion-item>
+
+  <!--GENERO-->
+  <ion-item>
+    <ion-label position="stacked" color="primary">Género</ion-label>
+    <ion-select  okText="Aceptar" cancelText="Cancelar">
+      <ion-select-option value="1">Masculino</ion-select-option>
+      <ion-select-option value="2">Femenino</ion-select-option>
+      <ion-select-option value="3">Otro</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!--FECHA DE NACIMIENTO-->
+  <ion-item>
+    <ion-label position="stacked" color="primary">Fecha de nacimiento</ion-label>
+    <ion-datetime-button datetime="datetime"></ion-datetime-button>
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime id="datetime" presentation="date"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+  </ion-item>
+
+
+
+
+</ion-content>
