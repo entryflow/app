@@ -98,16 +98,16 @@ export class ApiService {
   async createEmployees(data: any) {
     let id: number = 1;
 
-    const params = new HttpParams();
-    params.set('name', data.name);
-    params.set('middle_name', data.middle_name);
-    params.set('last_name', data.last_name);
-    params.set('email', data.email);
-    params.set('phone', data.phone);
-    params.set('num_control', data.num_control);
-    params.set('gender',data.gender);
-    params.set('company', id);
-    params.set('birth_date', data.birth_date);
+    const params = new HttpParams()
+    .set('name', data.name)
+    .set('middle_name', data.middle_name)
+    .set('last_name', data.last_name)
+    .set('email', data.email)
+    .set('phone', data.phone)
+    .set('num_control', data.num_control)
+    .set('gender',data.gender)
+    .set('company', id)
+    .set('birth_date', data.birth_date);
 
     const body = new FormData();
     body.append('image', data.image);
