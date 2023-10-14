@@ -57,7 +57,10 @@ export class SignupPage implements OnInit {
   get company_key() {
     return this.credentials.controls.company_key;
   }
- 
+  
+  goToLogin(){
+    this.router.navigateByUrl('/auth/login', { replaceUrl: true });
+  }
 
   ngOnInit() {}
 
