@@ -9,13 +9,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./tab4.page.scss'],
 })
 export class Tab4Page implements OnInit {
-
+  profile:any = [];
   constructor(private alertController:AlertController,private modalController:ModalController,
     private api:ApiService,private router:Router,private loadingController:LoadingController)
   {  }
 
-  ngOnInit() {
+  ngOnInit() {}
 
+  ionViewWillEnter(){
+    this.profile = [];
+
+    const loading = this.loadingController.create({
+      message:'Cargando...',
+      mode:'ios'
+    }).then(async (loadingElement)=>{
+      loadingElement.present();
+
+      let token:any = await this.api.getToken();
+      
+      this.profile = await this.api.getUserInfo(token);
+      this.profile = this.profile.user;
+      this.profile.company = this.profile.company.name;
+      console.log(this.profile);
+      loadingElement.dismiss();
+    });
+    
   }
 
   async onAlert(){

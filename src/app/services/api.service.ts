@@ -123,6 +123,24 @@ export class ApiService {
  
   }
 
+  async getUserInfo(token:any) {
+    let data: any = [];
+    const options = {
+      url: this.API_URL + 'token',
+      params: { token: token },
+    };
+
+    const response = await CapacitorHttp.request({
+      ...options,
+      method: 'GET',
+    }).then((res) => {
+      data = res.data;
+    });
+
+    return data;
+
+  }
+
   async setToken(token: string) {
     await Preferences.set({
       key: 'token',
@@ -131,7 +149,12 @@ export class ApiService {
   }
 
   async getToken() {
-    return await Preferences.get({ key: 'token' });
+    let data: any = [];
+    await Preferences.get({ key: 'token' }).then((res) => {
+      data = res.value;
+    });
+    
+    return data;
   }
 
   async deleteToken() {
