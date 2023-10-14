@@ -10,28 +10,26 @@ export class ApiService {
   API_URL = 'https://api-test-nlih-dev.fl0.io/';
   constructor() {}
 
-  async login() {
+  async login(email: string, password: string) {
     const options = {
       url: this.API_URL + 'auth/login',
       headers: { 'Content-Type': 'application/json' },
-      data: { foo: 'bar' },
+      data: { username: email, password: password },
     };
 
     const response = await CapacitorHttp.request({
       ...options,
       method: 'POST',
     });
+
+    return response.data;
   }
 
   async getEmployees(id: any) {
     let data = [];
     const options = {
       url: this.API_URL + 'employees/company/' + id,
-      //     headers: { 'Content-Type': 'application/json',
-      //   'Acces-Control-Allow-Origin': '*',
-      // 'Accept': 'application/json', },
-      //params: { company_id : id },
-      //data: { foo: 'bar' },
+     
     };
 
     const response = await CapacitorHttp.request({ ...options, method: 'GET' });
@@ -44,11 +42,7 @@ export class ApiService {
   async deleteEmployees(id: any) {
     const options = {
       url: this.API_URL + 'employees/' + id,
-      //     headers: { 'Content-Type': 'application/json',
-      //   'Acces-Control-Allow-Origin': '*',
-      // 'Accept': 'application/json', },
-      //params: { company_id : id },
-      //data: { foo: 'bar' },
+      
     };
 
     const response = await CapacitorHttp.request({
@@ -60,16 +54,22 @@ export class ApiService {
   }
 
   async createEmployees(data: any) {
-    const options = {
+    
+    let id:number = 1;
+    const options:any = {
       url: this.API_URL + 'employees',
       params: {
         name: data.name,
+        middle_name: data.middle_name,
         last_name: data.last_name,
         email: data.email,
         phone: data.phone,
-        company_id: data.company_id,
+        num_control: data.num_control,
+        gender: data.gender,
+        company: id,
         birth_date: data.birth_date,
       },
+      headers: { 'content-type': 'multipart/form-data' },
       data: {
         image: data.image,
       },
