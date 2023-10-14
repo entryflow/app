@@ -9,6 +9,7 @@ import {
 import { ApiService } from '../../services/api.service';
 import { FilePicker } from '@capawesome/capacitor-file-picker';
 import { format, parseISO } from 'date-fns';
+import { Camera, CameraResultType } from '@capacitor/camera';
 
 @Component({
   selector: 'app-modal-create-employee',
@@ -85,26 +86,27 @@ export class ModalCreateEmployeeComponent implements OnInit {
       data['image'] = this.fileBlob;
     }
 
-    console.log(data);
     this.modalCtrl.dismiss(data, 'confirm');
   }
 
   async takePicture() {
-    const result = await FilePicker.pickImages();
-    const file = result.files[0];
-    
-    if (file.blob) {
-      this.fileBlob = new File([file.blob], "1", {
-        type: file.mimeType,
-    });
+    try{
+      const image = await Camera.getPhoto({
+        quality: 100,
+        presentationStyle: 'fullscreen',
+        resultType: CameraResultType.DataUrl
+      });
   
-      // Convert the Blob to a data URL for image display
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        this.selectedImageDataUrl = reader.result as string;
-      };
-      reader.readAsDataURL(file.blob);
+      this.selectedImageDataUrl = image.dataUrl;
+      
+  
+      const imageBlob = this.dataURItoBlob(image.dataUrl);
+      this.fileBlob = new File([imageBlob], "1.jpeg", { type: 'image/jpeg' });
     }
+    catch(error){
+      console.log(error);
+    }
+    
   }
 
   dataURItoBlob(dataURI: any) {
@@ -115,5 +117,6 @@ export class ModalCreateEmployeeComponent implements OnInit {
     }
     return new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
   }
+
   ngOnInit(): void{}
 }

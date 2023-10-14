@@ -13,5 +13,7 @@ export class Tab1Page  {
 
   constructor(){}
 
-
+async ionViewWillEnter(){
+  
+}
 }

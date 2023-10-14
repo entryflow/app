@@ -7,6 +7,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //Se importa el componente modal para poder usarlo
+import { HttpClientModule } from  '@angular/common/http';
 
 import { NgApexchartsModule } from "ng-apexcharts";
 
@@ -25,6 +26,7 @@ import { ModalViewEmployeeInfoComponent } from './components/modal-view-employee
     ModalEditEmployeeComponent,
     ModalEditProfileComponent,
     ModalViewEmployeeInfoComponent,
+    
   ],
 
   imports: [
@@ -35,6 +37,7 @@ import { ModalViewEmployeeInfoComponent } from './components/modal-view-employee
      FormsModule,
      ReactiveFormsModule,
      NgApexchartsModule,
+     HttpClientModule
     ],
 
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

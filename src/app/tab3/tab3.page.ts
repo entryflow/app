@@ -39,6 +39,7 @@ export class Tab3Page {
   }
 
   async refreshEmployees() {
+    this.employees = [];
     this.employees = await this.api.getEmployees(1);
   }
 
