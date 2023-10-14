@@ -2,12 +2,15 @@
   <ion-toolbar >
     <ion-title>Administración de empleados</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="onModalCreate()"> <ion-icon name="add-outline"></ion-icon> </ion-button>
+      <ion-button (click)="onModalCreate()">
+        <ion-icon name="add-outline"></ion-icon>
+       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
   <ion-searchbar animated="true" placeholder="Buscar empleado" class="animate__animated animate__fadeInUpBig" mode="ios"></ion-searchbar>
   <ion-list lines="full" class="animate__animated animate__fadeInUpBig" mode="ios">
 
@@ -18,12 +21,14 @@
         <ion-label>{{employee.name}} {{employee.middle_name}} {{employee.last_name}}</ion-label>
       </ion-item>
 
-      <!--opciones del sliding-->
-      <ion-item-options side="start">
+        <!--opciones del sliding-->
+        <ion-item-options side="start">
+
         <!--opcion de editar -->
         <ion-item-option (click)="onModalEdit(employee.id)">
           <ion-icon name="create-outline" slot="icon-only"></ion-icon>
         </ion-item-option>
+
         <!--opcion de eliminar-->
         <ion-item-option color="danger" (click)="onAlert(employee.id)">
           <ion-icon slot="icon-only" name="trash"></ion-icon>

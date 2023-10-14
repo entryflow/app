@@ -8,14 +8,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //Se importa el componente modal para poder usarlo
 
-import { NgApexchartsModule } from 'ng-apexcharts'; //Graficas
+import { NgApexchartsModule } from "ng-apexcharts";
 
 import { ModalCreateEmployeeComponent } from './components/modal-create-employee/modal-create-employee.component';
 import { ModalEditEmployeeComponent } from './components/modal-edit-employee/modal-edit-employee.component';
 import { ModalEditProfileComponent } from './components/modal-edit-profile/modal-edit-profile.component';
 import { ModalViewEmployeeInfoComponent } from './components/modal-view-employee-info/modal-view-employee-info.component';
 
+
+
 @NgModule({
+
   declarations: [
     AppComponent,
     ModalCreateEmployeeComponent,
@@ -23,19 +26,21 @@ import { ModalViewEmployeeInfoComponent } from './components/modal-view-employee
     ModalEditProfileComponent,
     ModalViewEmployeeInfoComponent,
   ],
+
   imports: [
      BrowserModule,
      IonicModule.forRoot(),
      AppRoutingModule,
      ReactiveFormsModule,
-     //graficas
      FormsModule,
      ReactiveFormsModule,
      NgApexchartsModule,
     ],
+
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
 
   bootstrap: [AppComponent],
+
 })
 
 export class AppModule {}
