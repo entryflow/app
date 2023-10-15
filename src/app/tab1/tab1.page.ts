@@ -35,7 +35,9 @@ export class Tab1Page implements OnInit {
     ],
 
     chart: {
-      height: 250,
+      fontFamily: 'QuickSand',
+      marginBottom: 0,
+      height: 220,
       type: 'area',
       background: {show: false},
 
@@ -145,6 +147,7 @@ export class Tab1Page implements OnInit {
 async ionViewWillEnter(){
 
 }
+
 async openUrl(){
   await Browser.open({url: 'https://face-detection-server-gs2dvwxye-deventryflow-gmailcom.vercel.app/'});
 }
