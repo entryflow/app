@@ -11,18 +11,21 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-searchbar animated="true" placeholder="Buscar empleado" class="animate__animated animate__fadeInUpBig" mode="ios"></ion-searchbar>
+  <!--barra de busqueda-->
+  <!-- <ion-searchbar animated="true" placeholder="Buscar empleado" class="animate__animated animate__fadeInUpBig" mode="ios"></ion-searchbar> -->
+  <ion-searchbar [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
+
   <ion-list lines="full" class="animate__animated animate__fadeInUpBig" mode="ios">
 
     <ion-item-sliding *ngFor="let employee of employees">
 
-      <!--elemento de lista que al darle click muestra la informacion del usuario-->
-      <ion-item (click)="onModalViewEmployeeInfo()">
-        <ion-avatar slot="start">
-          <img src="{{employee.avatar}}">
-        </ion-avatar>
-        <ion-label>{{employee.name}} {{employee.middle_name}} {{employee.last_name}}</ion-label>
-      </ion-item>
+        <!--elemento de lista que al darle click muestra la informacion del usuario-->
+        <ion-item (click)="onModalViewEmployeeInfo()">
+          <ion-avatar slot="start">
+            <img src="{{employee.avatar}}">
+          </ion-avatar>
+          <ion-label> {{employee.name}} {{employee.middle_name}} {{employee.last_name}} </ion-label>
+        </ion-item>
 
         <!--opciones del sliding-->
         <ion-item-options side="start">
@@ -37,7 +40,7 @@
           <ion-icon slot="icon-only" name="trash"></ion-icon>
         </ion-item-option>
       </ion-item-options>
-      
+
     </ion-item-sliding>
 
   </ion-list>

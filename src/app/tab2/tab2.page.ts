@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 import ApexCharts from 'apexcharts'
 
 @Component({
@@ -6,31 +6,43 @@ import ApexCharts from 'apexcharts'
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
+
 export class Tab2Page {
 
-  constructor() {}
+  constructor()
+  {}
+
   ngOnInit() {
-    const options = {
-      chart: {
-        type: 'radialBar',
-        height: 300, // Ajusta la altura según tus necesidades
-      width: 300, // Ajusta el ancho según tus necesidades
+
+    var options = {
+        series: [{
+        name: 'series1',
+        data: [31, 40, 28, 51, 42, 109, 100]
+      }, {
+        name: 'series2',
+        data: [11, 32, 45, 32, 34, 52, 41]
+      }],
+        chart: {
+        height: 350,
+        type: 'area'
       },
-      series: [20],
-      labels: [''],
-      colors: ['#7FE1AD'],
-      responsive: [{
-        breakpoint: 480,
-        options: {
-          chart: {
-            width: 200
-          },
-          legend: {
-            position: 'bottom'
-          }
-        }
-      }]
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: 'smooth'
+      },
+      xaxis: {
+        type: 'datetime',
+        categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+      },
+      tooltip: {
+        x: {
+          format: 'dd/MM/yy HH:mm'
+        },
+      },
     };
+
     const options1 = {
       chart: {
         type: 'radialBar',
@@ -52,6 +64,7 @@ export class Tab2Page {
         }
       }]
     };
+
     const options2 = {
       chart: {
         type: 'radialBar',
@@ -142,5 +155,9 @@ export class Tab2Page {
     chart1.render();
     chart2.render();
     chart3.render();
+
+    setTimeout(() => {(window.dispatchEvent(new Event('resize')))}, 1);
+
   }
+
 }
