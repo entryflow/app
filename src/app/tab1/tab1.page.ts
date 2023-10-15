@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import ApexCharts from 'apexcharts'
+import { Browser } from '@capacitor/browser';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class Tab1Page implements OnInit {
 
   constructor(){}
 
-  ionViewWillEnter(){
+  ngOnInit(){
 
     var options = {
       series: [{
@@ -123,35 +124,20 @@ export class Tab1Page implements OnInit {
       },
     },
 
-    menubar:{
-      show: false,
-      enabled: false,
-    },
-
-    grid:{
-      show: false,
-      enabled: false,
-    },
-
-    legend:{
-      position: 'top',
-    },
-
-
     };
 
-
-    var chart = new ApexCharts(document.getElementById('chart0'), options);
+    const chart = new ApexCharts(document.getElementById('chart0'), options);
 
     chart.render();
 
-    setTimeout(() => {(window.dispatchEvent(new Event('resize')))}, 5000);
+    setTimeout(() => {(window.dispatchEvent(new Event('resize')))}, 1);
 
   }
 
-  ngOnInit(){
+async ionViewWillEnter(){
 
-
-  }
-
+}
+async openUrl(){
+  await Browser.open({url: 'https://face-detection-server-gs2dvwxye-deventryflow-gmailcom.vercel.app/'});
+}
 }
