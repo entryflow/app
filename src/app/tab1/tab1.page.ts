@@ -12,49 +12,145 @@ import ApexCharts from 'apexcharts'
 
 export class Tab1Page implements OnInit {
 
+
+
   constructor(){}
 
-  ngOnInit(){
+  ionViewWillEnter(){
 
     var options = {
       series: [{
-      name: 'series1',
-      data: [31, 40, 28, 51, 42, 109, 100]
-    }, {
-      name: 'series2',
-      data: [11, 32, 45, 32, 34, 52, 41]
+      name: 'Faltas',
+      data: [1, 32, 45, 32, 3, 52, 41]
     },
     {
-      name: 'series3',
-      data: [100, 109, 42, 51, 28, 40, 31]
-    }],
-      chart: {
-      height: 350,
-      type: 'area'
+      name: 'A tiempo',
+      data: [10, 109, 42, 51, 28, 40, 31]
     },
+    {
+      name: 'Retardos',
+      data: [31, 40, 28, 51, 42, 10, 1]
+    }
+    ],
+
+    chart: {
+      height: 250,
+      type: 'area',
+      background: {show: false},
+
+      animations: {
+        enabled: true,
+        easing: 'easeinout',
+        speed: 2000,
+
+        animateGradually: {
+            enabled: true,
+            delay: 150
+        },
+
+        dynamicAnimation: {
+            enabled: true,
+            speed: 3
+        }
+
+    },
+
+    toolbar:{
+      show: false,
+      enabled: false,
+      tools:{
+        download: false,
+        selection: false,
+        zoom: false,
+        zoomin: false,
+        zoomout: false,
+        pan: false,
+        reset: false,
+        customIcons: []
+      }
+    }
+
+    },
+
     dataLabels: {
       enabled: false
     },
+
     stroke: {
-      curve: 'smooth'
+
+      show: true,
+      curve: 'smooth',
+      width: 1,
+
     },
+
+    yaxis:{
+      show: false,
+      axisBorder: {
+        show: false
+      },
+      axisTicks: {
+        show: false
+      },
+      labels:{
+        show: false
+      }
+    },
+
     xaxis: {
+
+      show: false,
       type: 'datetime',
-      categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+      categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"],
+
+      axisBorder: {
+        show: false
+      },
+      axisTicks: {
+        show: false
+      },
+      labels:{
+        show: false
+      }
+
     },
+
     tooltip: {
+      enabled: false,
+      show: false,
       x: {
         format: 'dd/MM/yy HH:mm'
       },
     },
 
+    menubar:{
+      show: false,
+      enabled: false,
+    },
+
+    grid:{
+      show: false,
+      enabled: false,
+    },
+
+    legend:{
+      position: 'top',
+    },
+
+
     };
 
-    const chart = new ApexCharts(document.getElementById('chart0'), options);
+
+    var chart = new ApexCharts(document.getElementById('chart0'), options);
 
     chart.render();
 
-    setTimeout(() => {(window.dispatchEvent(new Event('resize')))}, 1);
+    setTimeout(() => {(window.dispatchEvent(new Event('resize')))}, 5000);
+
+  }
+
+  ngOnInit(){
+
 
   }
 

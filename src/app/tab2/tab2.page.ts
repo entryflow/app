@@ -146,12 +146,11 @@ export class Tab2Page {
     };
 
 
-    const chart = new ApexCharts(document.getElementById('chart0'), options);
+    const chart = new ApexCharts(document.getElementById('chart'), options);
     const chart1 = new ApexCharts(document.getElementById('chart1'), options1);
     const chart2 = new ApexCharts(document.getElementById('chart2'), options2);
     const chart3 = new ApexCharts(document.getElementById('chartStack'), stack);
 
-    chart.render();
     chart1.render();
     chart2.render();
     chart3.render();

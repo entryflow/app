@@ -11,19 +11,70 @@
   <ion-card>
 
     <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+
+      <ion-card-title style="text-align: center;">11,200</ion-card-title>
+
+      <ion-card-subtitle style="text-align: center;">Registro de entradas</ion-card-subtitle>
+
     </ion-card-header>
 
     <ion-card-content>
-      Here's a small text description for the card content. Nothing more, nothing less.
+
+      <ion-grid >
+
+        <ion-row >
+          <ion-col class="entryData">
+            254
+          </ion-col >
+          <ion-col class="entryData">
+            300
+          </ion-col>
+          <ion-col class="entryData">
+            100
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+
+      <ion-grid >
+
+        <ion-row >
+            <ion-col class="labelData">
+              Faltas
+            </ion-col>
+            <ion-col class="labelData">
+              A tiempo
+            </ion-col>
+            <ion-col class="labelData">
+              Tarde
+            </ion-col>
+        </ion-row>
+
+      </ion-grid>
+
     </ion-card-content>
 
   </ion-card>
 
-  <div id="chContainer1">
-    <div id="chart0" class="chart"></div>
+
+
+
+  <div id="chart0" class="chart" ></div>
+
+
+
+  <!--boton de editar perfil-->
+  <ion-button
+  class="Button"
+  fill="outline"
+  expand="block"
+  >
+  <ion-icon slot="end" class="ButtonIcon" name="play-skip-forward-circle-outline" size="large"></ion-icon>
+  <div class="ButtonText">
+    <ion-text>Empezar a registrar<br>
+       entradas/salidas</ion-text>
   </div>
+  </ion-button>
 
 
 </ion-content>
