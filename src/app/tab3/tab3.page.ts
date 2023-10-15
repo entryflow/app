@@ -52,8 +52,8 @@ export class Tab3Page {
     private alertController: AlertController,
     private modalController: ModalController,
     private api: ApiService,
-    private LoadingController: LoadingController
-
+    private LoadingController: LoadingController,
+    private toastController: ToastController
   ) {}
 
 
@@ -98,8 +98,30 @@ export class Tab3Page {
         {
           text: 'Aceptar',
           handler: async () => {
-            this.api.deleteEmployees(id);
-            await this.refreshEmployees();
+            const loading = await this.LoadingController.create({
+              message: 'Cargando...',
+              mode: 'ios',
+            }).then(async (loadingElement) => {
+              await alert.dismiss();
+              loadingElement.present();
+              await this.api.deleteEmployees(id);
+              await this.refreshEmployees();
+              const toast = await this.toastController.create({
+                message: 'Empleado eliminado correctamente',
+                duration: 2000,
+                mode: 'ios',
+                color: 'success',
+                position: 'top',
+                animated: true,
+              });
+
+
+
+              loadingElement.dismiss();
+              await toast.present();
+            });
+
+
           },
         },
       ],
@@ -123,8 +145,25 @@ export class Tab3Page {
     const { data } = await modal.onWillDismiss();
 
     if (data) {
-      await this.api.createEmployees(data);
-      this.refreshEmployees();
+      const loading = await this.LoadingController.create({
+        message: 'Cargando...',
+        mode: 'ios',
+      }).then(async (loadingElement) => {
+        loadingElement.present();
+        await this.api.createEmployees(data);
+        const toast = await this.toastController.create({
+          message: 'Empleado creado correctamente',
+          duration: 2000,
+          mode: 'ios',
+          color: 'success',
+          position: 'top',
+          animated: true,
+        });
+        await this.refreshEmployees();
+
+        await toast.present();
+        loadingElement.dismiss();
+      });
     }
 
   }

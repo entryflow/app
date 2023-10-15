@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <ion-title>Registro</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="credentials" (ngSubmit)="signup()">
+    <div *ngIf="step === 1">
+      <div class="container-middle-bottom animate__animated animate__lightSpeedInRight ">
+        <ion-list>
+          <ion-item>
+            <ion-label position="stacked" color="primary">Nombre</ion-label>
+            <ion-input type="text" placeholder="John" formControlName="name"></ion-input>
+            <ion-note slot="error" *ngIf="(name.dirty || name.touched) && name.errors">Por favor ingresa un
+              nombre</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="primary">Apellido paterno</ion-label>
+            <ion-input type="text" placeholder="Doe" formControlName="middle_name"></ion-input>
+            <ion-note slot="error" *ngIf="(middle_name.dirty || middle_name.touched) && middle_name.errors">Por favor
+              ingresa un apellido paterno</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="primary">Apellido materno</ion-label>
+            <ion-input type="text" placeholder="Ipsum" formControlName="last_name"></ion-input>
+            <ion-note slot="error" *ngIf="(last_name.dirty || last_name.touched) && last_name.errors">Por favor ingresa
+              un
+              apellido materno</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="primary">Número telefonico</ion-label>
+            <ion-input type="text" placeholder="664767889" formControlName="phone"></ion-input>
+            <ion-note slot="error" *ngIf="(phone.dirty || phone.touched) && phone.errors">Por favor ingresa un número
+              telefonico</ion-note>
+          </ion-item>
+        </ion-list>
+
+        
+          <ion-button expand="block" color="primary" class="btn-login" mode="ios"
+            (click)="nextStep()">Continuar</ion-button>
+        
+      </div>
+    </div>
+
+    <div *ngIf="step === 2">
+      <div class="container-middle-bottom animate__animated animate__lightSpeedInRight ">
+        <ion-item>
+          <ion-label position="stacked" color="primary">Clave de compañia</ion-label>
+          <ion-input type="text" placeholder="HH579230K" formControlName="company_key"></ion-input>
+          <ion-note slot="error" *ngIf="(company_key.dirty || company_key.touched) && company_key.errors">Por favor
+            ingresa una clave de compañia</ion-note>
+        </ion-item>
+        <div class="container-btn-login">
+          <ion-button (click)="prevStep()" color="light">Regresar</ion-button>
+          <ion-button expand="block" color="primary" class="btn-login" mode="ios"
+            (click)="step2()">Continuar</ion-button>
+        </div>
+        
+
+      </div>
+      
+
+    </div>
+    <div *ngIf="step === 3">
+      <div class="container-middle-bottom animate__animated animate__lightSpeedInRight ">
+        <ion-item lines="none">
+          <ion-label position="stacked" color="primary">Foto de perfil</ion-label>
+          <div *ngIf="selectedImageDataUrl">
+            <img [src]="selectedImageDataUrl" style="width: 40%; margin-top:8px;" alt="Selected Image"
+              (click)="takePicture()">
+          </div>
+          <div *ngIf="!selectedImageDataUrl">
+            <img style="width: 40%; margin-top:8px;" src="https://ionicframework.com/docs/img/demos/avatar.svg"
+              (click)="takePicture()">
+          </div>
+          <div *ngIf="imageError">
+            <ion-note slot="error" color="danger">Por
+              favor ingresa una foto de perfil</ion-note>
+          </div>
+        </ion-item>
+        <div class="container-btn-login">
+          <ion-button (click)="prevStep()" color="light">Regresar</ion-button>
+          <ion-button expand="block" color="primary" class="btn-login" mode="ios"
+            (click)="step3()">Continuar</ion-button>
+        </div>
+        
+      </div>
+    </div>
+    <div *ngIf="step === 4">
+      <div class="container-middle-bottom animate__animated animate__lightSpeedInRight ">
+        <ion-item>
+          <ion-label position="stacked" color="primary">Correo electrónico</ion-label>
+          <ion-input type="text" placeholder="johndoe@gmail.com" inputmode="email" formControlName="email"></ion-input>
+          <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Por favor ingresa un correo
+            electrónico</ion-note>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="stacked" color="primary">Contraseña</ion-label>
+          <ion-input type="password" placeholder="........." formControlName="password"></ion-input>
+          <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Por favor ingresa una
+            contraseña</ion-note>
+        </ion-item>
+        <div class="container-btn-login">
+          <ion-button (click)="prevStep()" color="light">Regresar</ion-button>
+          <ion-button expand="block" color="primary" class="btn-login" mode="ios" (click)="signup()">Registrar</ion-button>
+        </div>
+        
+
+      </div>
+      
+    </div>
+  </form>
+  <div class="container-bottom animate__animated animate__lightSpeedInRight ">
+    <ion-text>
+      <p>¿Ya tienes cuenta? <a href="/auth/login">Inicia sesión</a></p>
+    </ion-text>  
+  </div>
+
+</ion-content>
