@@ -10,8 +10,8 @@
 
 .chart {
 
-  flex: 1;
-  margin-right: 10px;
+  flex: 0;
+  margin-right: 0px;
 
 }
 
@@ -20,7 +20,7 @@
 
   .chart {
     flex-basis: 100%; /* Hace que los gráficos ocupen todo el ancho en pantallas pequeñas */
-    margin-bottom: 10px; /* Agrega un margen inferior entre gráficos en pantallas pequeñas */
+    margin-bottom: 0px; /* Agrega un margen inferior entre gráficos en pantallas pequeñas */
   }
 
 }
@@ -55,7 +55,6 @@ ion-card{
 .Button{
   padding: 11px;
   height: 80px;
-  margin-bottom: 0px;
   size: large;
 }
 

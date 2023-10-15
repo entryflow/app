@@ -124,6 +124,14 @@ export class Tab1Page implements OnInit {
       },
     },
 
+    grid:{
+      show: false,
+    },
+
+    legend:{
+      position: 'top',
+    }
+
     };
 
     const chart = new ApexCharts(document.getElementById('chart0'), options);
