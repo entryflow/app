@@ -1,6 +1,6 @@
 <ion-header [translucent]="true" mode="ios">
   <ion-toolbar>
-    <ion-title>Administración de empleados</ion-title>
+    <ion-title>Empleados</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="onModalCreate()">
         <ion-icon name="add-outline"></ion-icon>
@@ -9,11 +9,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" mode = "ios">
 
   <!--barra de busqueda-->
   <!-- <ion-searchbar animated="true" placeholder="Buscar empleado" class="animate__animated animate__fadeInUpBig" mode="ios"></ion-searchbar> -->
-  <ion-searchbar [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
+  <ion-searchbar placeholder="Buscar empleados..." [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
 
   <ion-list lines="full" class="animate__animated animate__fadeInUpBig" mode="ios">
 

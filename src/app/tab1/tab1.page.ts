@@ -13,7 +13,9 @@ import { Browser } from '@capacitor/browser';
 
 export class Tab1Page implements OnInit {
 
-
+  public faltasData: any = [1, 32, 45, 32, 3, 52, 41];
+  public aTiempoData: any = [10, 109, 42, 51, 28, 40, 31];
+  public retardos: any = [31, 40, 28, 51, 42, 10, 1];
 
   constructor(){}
 
@@ -22,15 +24,15 @@ export class Tab1Page implements OnInit {
     var options = {
       series: [{
       name: 'Faltas',
-      data: [1, 32, 45, 32, 3, 52, 41]
+      data: this.faltasData
     },
     {
       name: 'A tiempo',
-      data: [10, 109, 42, 51, 28, 40, 31]
+      data: this.aTiempoData
     },
     {
       name: 'Retardos',
-      data: [31, 40, 28, 51, 42, 10, 1]
+      data: this.retardos
     }
     ],
 
@@ -40,6 +42,9 @@ export class Tab1Page implements OnInit {
       height: 220,
       width: '100%',
       type: 'area',
+
+      parentHeightOffset: 0,
+
       background: {show: false},
 
       animations: {
@@ -55,9 +60,13 @@ export class Tab1Page implements OnInit {
         dynamicAnimation: {
             enabled: true,
             speed: 3
-        }
+        },
 
     },
+
+    //  sparkline: {
+    //    enabled: true
+    //  },
 
     toolbar:{
       show: false,
@@ -81,7 +90,6 @@ export class Tab1Page implements OnInit {
     },
 
     stroke: {
-
       show: true,
       curve: 'smooth',
       width: 1,
@@ -129,10 +137,14 @@ export class Tab1Page implements OnInit {
 
     grid:{
       show: false,
+      enable: false,
+      padding: { left: -1, right: -1, top: 0, bottom: -20},
     },
 
     legend:{
-      position: 'bottom',
+      position: 'top',
+      width: 0,
+      height: 0
     }
 
     };
