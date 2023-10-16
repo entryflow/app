@@ -38,6 +38,7 @@ export class Tab1Page implements OnInit {
       fontFamily: 'QuickSand',
       marginBottom: 0,
       height: 220,
+      width: '100%',
       type: 'area',
       background: {show: false},
 
@@ -119,8 +120,8 @@ export class Tab1Page implements OnInit {
     },
 
     tooltip: {
-      enabled: false,
-      show: false,
+      enabled: true,
+      show: true,
       x: {
         format: 'dd/MM/yy HH:mm'
       },
@@ -131,7 +132,7 @@ export class Tab1Page implements OnInit {
     },
 
     legend:{
-      position: 'top',
+      position: 'bottom',
     }
 
     };

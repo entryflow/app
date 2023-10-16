@@ -1,3 +1,15 @@
+.border{
+  margin: 11px;
+  border: 1px solid #1B305B;
+  border-radius: 10px;
+  border-width: 2px;
+}
+
+.chart {
+  flex: 1;
+  margin-right: 10px;
+}
+
 
 ion-col {
   padding: 0;
@@ -10,8 +22,8 @@ ion-card{
   font-family: QuickSand;
 }
 
-.customPadding{
-  padding: 11px;
+.customMargin{
+  margin: 11px;
   margin: 0;
 }
 
