@@ -39,7 +39,7 @@ export class Tab1Page implements OnInit {
     chart: {
       fontFamily: 'QuickSand',
       marginBottom: 0,
-      height: 250,
+      height: 230,
       width: '100%',
       type: 'area',
 
