@@ -14,7 +14,7 @@ import { Browser } from '@capacitor/browser';
 export class Tab1Page implements OnInit {
 
   public faltasData: any = [1, 32, 45, 32, 3, 52, 41];
-  public aTiempoData: any = [10, 109, 42, 51, 28, 40, 31];
+  public aTiempoData: any = [119, 109, 129, 100, 101, 90, 109];
   public retardos: any = [31, 40, 28, 51, 42, 10, 1];
 
   constructor(){}
@@ -39,7 +39,7 @@ export class Tab1Page implements OnInit {
     chart: {
       fontFamily: 'QuickSand',
       marginBottom: 0,
-      height: 220,
+      height: 250,
       width: '100%',
       type: 'area',
 
@@ -113,7 +113,7 @@ export class Tab1Page implements OnInit {
 
       show: false,
       type: 'datetime',
-      categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"],
+      categories: ["2018-09-19T00:00:00.000Z", "2018-09-20T01:30:00.000Z", "2018-09-21T02:30:00.000Z", "2018-09-22T03:30:00.000Z", "2018-09-23T04:30:00.000Z", "2018-09-24T05:30:00.000Z", "2018-09-25T06:30:00.000Z"],
 
       axisBorder: {
         show: false
@@ -131,7 +131,7 @@ export class Tab1Page implements OnInit {
       enabled: true,
       show: true,
       x: {
-        format: 'dd/MM/yy HH:mm'
+        format: 'dd/MM/yyyy HH:mm'
       },
     },
 

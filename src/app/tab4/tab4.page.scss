@@ -1,24 +1,62 @@
+.card {
+  margin: 0 auto;
+
+  .header {
+    height: 200px;
+
+    .avatar {
+      width: 160px;
+      height: 160px;
+      position: relative;
+      margin: 0 auto;
+
+      img {
+        width: 100%;  // Asegura que la imagen se ajuste al tamaño del contenedor
+        height: 100%;
+        object-fit: cover;  // Mantiene la relación de aspecto de la imagen
+        border-radius: 50%;
+        position: absolute;
+        top: 40px;
+        border: 3px solid #1B305B;
+      }
+    }
+  }
+}
+
+.customMargin{
+  margin: 11px;
+  margin: 0;
+}
+
+.border{
+  margin: 11px;
+  border: 1px solid #1B305B;
+  border-radius: 10px;
+  border-width: 2px;
+  padding: 0;
+}
+
 .profileInfo{
-  top: 40px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-family: QuickSand;
 }
 
-.profileButtons {
-position: relative;
-}
-
-.profileButtonIcon{
+.ButtonIcon{
   position:absolute;
   right: 10px;
 }
 
-.profileButton{
+.Button{
   height: 80px;
-  font-size: 20px;
   margin-bottom: 10px;
   size: large;
 }
 
-.profileButtonText{
-  position:absolute;
+.ButtonText{
+  text-align: left;
+  position: absolute;
+  font-weight: bold;
+  font-family: QuickSand;
   left: 10px;
 }

@@ -15,14 +15,24 @@
          <div class="profileInfo">
 
            <!--imagen de perfil-->
-           <div text-center>
+           <!-- <div text-center>
               <p align="center">
                 <ion-img
                 style="width: 40%; margin-top: 50px;"
                 src="{{ profile.avatar }}">
                 </ion-img>
               </p>
-           </div>
+           </div> -->
+
+           <div class="card">
+            <div class="header">
+              <div class="avatar">
+                <img src="{{profile.avatar}}" alt="">
+              </div>
+            </div>
+          </div>
+
+
 
 
          <!--carta de informacion del perfil-->
@@ -38,39 +48,46 @@
 
 
       <!--botones de la pantalla del perfil-->
-       <div class="profileButtons" style="padding: 11px;" mode="ios">
+       <div class="Buttons" mode="ios">
 
         <div class = "animate__animated animate__backInUp">
 
-          <!--boton de editar perfil-->
+        <!--boton de editar perfil-->
+        <div class="customMargin">
           <ion-button
-          class="profileButton"
-          fill="outline"
+          class="Button border"
+          fill="clear"
           expand="block"
           (click)="onModalEdit()"
           >
-          <ion-icon class="profileButtonIcon" slot="end" name="create-outline"></ion-icon>
-          <div class="profileButtonText">
-            Editar perfil
+          <ion-icon slot="end" class="ButtonIcon" name="create" size="large"></ion-icon>
+          <div class="ButtonText">
+            <ion-text>Editar perfil</ion-text>
           </div>
           </ion-button>
+        </div>
+
 
         </div>
 
         <div class = "animate__animated animate__backInUp">
 
           <!--boton de cerrar sesión-->
-          <ion-button
-          class="profileButton"
-          fill="outline"
-          expand="block"
-          (click)="onAlert()"
-          >
-          <ion-icon class="profileButtonIcon" slot="end" name="log-out-outline"></ion-icon>
-          <div class="profileButtonText">
-            Cerrar sesión
+
+          <div class="customMargin">
+            <ion-button
+            class="Button border"
+            fill="clear"
+            expand="block"
+            (click)="onModalEdit()"
+            >
+            <ion-icon slot="end" class="ButtonIcon" name="log-out" size="large"></ion-icon>
+            <div class="ButtonText">
+              <ion-text>Cerrar sesión</ion-text>
+            </div>
+            </ion-button>
           </div>
-          </ion-button>
+
 
         </div>
 

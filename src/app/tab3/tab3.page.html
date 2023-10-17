@@ -13,7 +13,7 @@
 
   <!--barra de busqueda-->
   <!-- <ion-searchbar animated="true" placeholder="Buscar empleado" class="animate__animated animate__fadeInUpBig" mode="ios"></ion-searchbar> -->
-  <ion-searchbar placeholder="Buscar empleados..." [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
+  <ion-searchbar style="font-family: QuickSand;" placeholder="Buscar empleados..." [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
 
   <ion-list lines="full" class="animate__animated animate__fadeInUpBig" mode="ios">
 
@@ -24,7 +24,7 @@
           <ion-avatar slot="start">
             <img src="{{employee.avatar}}">
           </ion-avatar>
-          <ion-label> {{employee.name}} {{employee.middle_name}} {{employee.last_name}} </ion-label>
+          <ion-label style = "font-family: QuickSand; font-weight: 500;"> {{employee.name}} {{employee.middle_name}} {{employee.last_name}} </ion-label>
         </ion-item>
 
         <!--opciones del sliding-->
