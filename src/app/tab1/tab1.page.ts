@@ -39,7 +39,7 @@ export class Tab1Page implements OnInit {
     chart: {
       fontFamily: 'QuickSand',
       marginBottom: 0,
-      height: 230,
+      height: '33%',
       width: '100%',
       type: 'area',
 
@@ -138,7 +138,7 @@ export class Tab1Page implements OnInit {
     grid:{
       show: false,
       enable: false,
-      padding: { left: -1, right: -1, top: 0, bottom: -20},
+      padding: { left: -1, right: -1, top: 0, bottom: -12},
     },
 
     legend:{

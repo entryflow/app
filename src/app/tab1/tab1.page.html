@@ -7,9 +7,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" mode="ios">
-  <ion-card class="border" no-shadow>
 
-    <ion-card-header>
+  <ion-card class="homeBorder">
+
+    <ion-card-header class="homeCardHeader">
 
       <ion-card-title style="text-align: center;">11,200</ion-card-title>
 
@@ -17,13 +18,12 @@
 
     </ion-card-header>
 
-    <ion-card-content>
+    <ion-card-content class="homeCardContent">
 
-      <ion-grid >
+      <ion-grid style="margin-top: 5%;">
 
-        <ion-row >
+        <ion-row>
           <ion-col class="entryData">
-            <!--faltas-->
             1119
           </ion-col >
           <ion-col class="entryData">
@@ -59,14 +59,14 @@
 
 
 
-  <div id="chart0" class="chart border"></div>
+  <div id="chart0" class="chart homeBorder"></div>
 
 
 
   <!--boton de editar perfil-->
   <div class="customMargin">
     <ion-button
-    class="Button border"
+    class="Button homeBorder"
     fill="clear"
     expand="block"
     (click)="openUrl()"
