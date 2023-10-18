@@ -24,6 +24,15 @@
   padding: 0;
 }
 
+.chartBorder{
+  height: 44%;
+  margin: 11px;
+  border: 1px solid #1B305B;
+  border-radius: 10px;
+  border-width: 2px;
+  padding: 0;
+}
+
 ion-col {
   padding: 0;
   margin: 0;
@@ -42,7 +51,7 @@ ion-card{
 }
 
 .Button{
-  height: 26%;
+  height: 15%;
   size: large;
 }
 

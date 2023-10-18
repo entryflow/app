@@ -37,9 +37,10 @@ export class Tab1Page implements OnInit {
     ],
 
     chart: {
+
       fontFamily: 'QuickSand',
       marginBottom: 0,
-      height: '33%',
+      height: '44%',
       width: '100%',
       type: 'area',
 
@@ -145,9 +146,9 @@ export class Tab1Page implements OnInit {
       position: 'top',
       width: 0,
       height: 0
-    }
+    },
 
-    };
+  };
 
     const chart = new ApexCharts(document.getElementById('chart0'), options);
 
