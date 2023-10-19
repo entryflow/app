@@ -21,6 +21,11 @@
   }
 }
 
+ion-label{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
 ion-card-content{
   padding: 0px;
   margin-bottom: 20px;
@@ -28,17 +33,28 @@ ion-card-content{
 
 ion-card-header{
   margin-bottom: 20px;
+  padding-left: 0;
+  padding-right: 0;
+
 }
 
 ion-input{
+  height: auto;
+  width: auto;
   font-family: QuickSand;
+  margin: 0px;
+  padding: 0px;
 }
 
 ion-card{
   font-family: QuickSand;
+  margin-left: 11px;
+  margin-right: 11px;
+  margin-top: 11px;
 }
 
 ion-item{
+  --min-height: 16px !important;
   margin: 5%;
   margin-bottom: 0px;
   margin-top: 0px;
