@@ -20,7 +20,17 @@
     <ion-item-sliding *ngFor="let employee of employees">
 
         <!--elemento de lista que al darle click muestra la informacion del usuario-->
-        <ion-item (click)="onModalViewEmployeeInfo()">
+        <ion-item (click)="onModalViewEmployeeInfo(
+          employee.name,
+          employee.middle_name,
+          employee.last_name,
+          employee.phone,
+          employee.email,
+          employee.num_control,
+          employee.gender,
+          employee.birth_date,
+          employee.avatar)">
+
           <ion-avatar slot="start">
             <img src="{{employee.avatar}}">
           </ion-avatar>

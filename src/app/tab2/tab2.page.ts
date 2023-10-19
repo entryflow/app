@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
 import ApexCharts from 'apexcharts'
+import { ChartComponent } from 'ng-apexcharts';
 
 @Component({
   selector: 'app-tab2',
@@ -15,42 +16,108 @@ export class Tab2Page {
   ngOnInit() {
 
     var options = {
-        series: [{
-        name: 'series1',
-        data: [31, 40, 28, 51, 42, 109, 100]
-      }, {
-        name: 'series2',
-        data: [11, 32, 45, 32, 34, 52, 41]
-      }],
-        chart: {
-        height: 350,
-        type: 'area'
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: 'smooth'
-      },
-      xaxis: {
-        type: 'datetime',
-        categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-      },
-      tooltip: {
-        x: {
-          format: 'dd/MM/yy HH:mm'
+
+    series: [64],
+
+    chart: {
+        fontFamily: 'QuickSand',
+      height: 200,
+      type: 'radialBar',
+      toolbar: {
+        show: false
+      }
+    },
+
+    plotOptions: {
+      radialBar: {
+        startAngle: 0,
+        endAngle: 360,
+         hollow: {
+          margin: 0,
+          size: '70%',
+          background: '#fff',
+          image: undefined,
+          imageOffsetX: 0,
+          imageOffsetY: 0,
+          position: 'front',
+          dropShadow: {
+            enabled: false,
+            top: 3,
+            left: 0,
+            blur: 4,
+            opacity: 0.24
+          }
         },
+        track: {
+          background: '#EEF0F2',
+          strokeWidth: '67%',
+          margin: 0, // margin is in pixels
+          dropShadow: {
+            enabled: false,
+            top: -3,
+            left: 0,
+            blur: 4,
+            opacity: 0.35
+          }
+        },
+
+        dataLabels: {
+          show: true,
+          name: {
+            offsetY: -10,
+            show: true,
+            color: '#888',
+            fontSize: '17px',
+          },
+          value: {
+            formatter: function(val: string) {
+              return (val+"%");
+            },
+            color: '#111',
+            fontSize: '200%',
+            show: true,
+          }
+        }
+      }
+    },
+    theme: {
+      mode: 'light',
+      palette: 'palette10',
+      monochrome: {
+          enabled: true,
+          color: '#7FE1AD',
+          shadeTo: 'dark',
+          shadeIntensity: 0.65
       },
+    },
+
+    fill: {
+      type: 'solid',
+      gradient: {
+        shade: 'dark',
+        type: 'horizontal',
+        shadeIntensity: 0.5,
+        gradientToColors: ['#ABE5A1'],
+        inverseColors: true,
+        opacityFrom: 1,
+        opacityTo: 1,
+        stops: [0, 100]
+      }
+    },
+    stroke: {
+      lineCap: 'round'
+    },
+    labels: ['Este mes'],
     };
 
     const options1 = {
       chart: {
         type: 'radialBar',
-        height: 300, // Ajusta la altura según tus necesidades
-      width: 300, // Ajusta el ancho según tus necesidades
+        height: 300,
+      width: 300,
       },
       series: [44],
-      labels: [''],
+      labels: ['Ultima semana'],
       colors: ['#F85F6A'],
       responsive: [{
         breakpoint: 480,
@@ -68,8 +135,8 @@ export class Tab2Page {
     const options2 = {
       chart: {
         type: 'radialBar',
-        height: 300, // Ajusta la altura según tus necesidades
-      width: 300, // Ajusta el ancho según tus necesidades
+        height: 300,
+      width: 300,
       },
       series: [80],
       labels: [''],
@@ -146,11 +213,12 @@ export class Tab2Page {
     };
 
 
-    const chart = new ApexCharts(document.getElementById('chart'), options);
+    const radialChart1 = new ApexCharts(document.getElementById('radialChart1'), options);
     const chart1 = new ApexCharts(document.getElementById('chart1'), options1);
     const chart2 = new ApexCharts(document.getElementById('chart2'), options2);
     const chart3 = new ApexCharts(document.getElementById('chartStack'), stack);
 
+    radialChart1.render();
     chart1.render();
     chart2.render();
     chart3.render();

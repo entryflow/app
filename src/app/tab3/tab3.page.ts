@@ -178,11 +178,23 @@ export class Tab3Page {
     return await modal.present();
   }
 
-  async onModalViewEmployeeInfo() {
+  async onModalViewEmployeeInfo(employeeName: any, employeeFirstName: any, employeeLastName: any, employeePhone: any, employeeEmail: any, employeeControlNumber: any, employeeGender: any, employeeBirthDate: any, employeeAvatar: any) {
     const modal = await this.modalController.create({
       component: ModalViewEmployeeInfoComponent,
       mode: 'ios',
+      componentProps: {
+        employeeName: employeeName,
+        employeeFirstName: employeeFirstName,
+        employeeLastName: employeeLastName,
+        employeePhone: employeePhone,
+        employeeEmail: employeeEmail,
+        employeeControlNumber: employeeControlNumber,
+        employeeGender: employeeGender,
+        employeeBirthDate: employeeBirthDate,
+        employeeAvatar: employeeAvatar,
+      },
     });
+
     return await modal.present();
   }
 

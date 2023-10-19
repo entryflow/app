@@ -42,3 +42,8 @@ ion-label{
 ion-searchbar{
   font-family: QuickSand;
 }
+
+ion-toolbar {
+  --border-width: 0px 0;
+  --border-style: solid;
+}

@@ -1,17 +1,19 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" mode = "ios">
 
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <h1 color = "dark" >
+    Reportes
+  </h1>
 
+  <ion-item style = "text-align: end;">
+    <ion-label>
+      <p>Faltas</p>
+    </ion-label>
+  </ion-item>
 
   <div id="chartContainer">
-
     <!--GRAFICA 1-->
     <div id="chContainer1">
-      <div id="chart0" class="chart"></div>
+      <div id="radialChart1" class="chart"></div>
     </div>
 
     <!--GRAFICA 2-->

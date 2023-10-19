@@ -8,7 +8,20 @@ import { ModalController } from '@ionic/angular';
 })
 export class ModalViewEmployeeInfoComponent  implements OnInit {
 
-  constructor(private modalCtrl:ModalController) { }
+  public employeeName?: string;
+  public employeeFirstName?: string;
+  public employeeLastName?: string;
+  public employeePhone?: string;
+  public employeeEmail?: string;
+  public employeeControlNumber?: string;
+  public employeeGender?: string;
+  public employeeBirthDate?: string;
+  public employeeAvatar?: string;
+
+  constructor(private modalCtrl:ModalController,)
+  {
+
+   }
 
   cancel() {
     this.modalCtrl.dismiss(null, 'cancel');
@@ -19,6 +32,8 @@ export class ModalViewEmployeeInfoComponent  implements OnInit {
   }
 
   onModalViewEmployeeInfo(){
+
+
 
   }
 

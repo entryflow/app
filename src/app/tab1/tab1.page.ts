@@ -36,6 +36,18 @@ export class Tab1Page implements OnInit {
     }
     ],
 
+    colors:['#f54242', '#42f584', '#f5a742'],
+
+    // theme: {
+      // mode: 'light',
+      // monochrome: {
+          // enabled: false,
+          // color: '#0570B0',
+          // shadeTo: 'dark',
+          // shadeIntensity: 0.65
+      // },
+    // },
+
     chart: {
 
       fontFamily: 'QuickSand',
@@ -70,10 +82,10 @@ export class Tab1Page implements OnInit {
     //  },
 
     toolbar:{
-      show: false,
-      enabled: false,
+      show: true,
+      enabled: true,
       tools:{
-        download: false,
+        download: true,
         selection: false,
         zoom: false,
         zoomin: false,
@@ -93,7 +105,7 @@ export class Tab1Page implements OnInit {
     stroke: {
       show: true,
       curve: 'smooth',
-      width: 1,
+      width: 2
 
     },
 

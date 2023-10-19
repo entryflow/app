@@ -12,10 +12,13 @@ export class Tab4Page implements OnInit {
 
     profile:any = [];
 
-
-  constructor(private alertController:AlertController,private modalController:ModalController,
-    private api:ApiService,private router:Router,private loadingController:LoadingController)
-  {  }
+  constructor(
+    private alertController:AlertController,
+    private modalController:ModalController,
+    private api:ApiService,
+    private router:Router,
+    private loadingController:LoadingController)
+  {}
 
   ngOnInit() {}
 

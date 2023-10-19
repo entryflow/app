@@ -23,10 +23,16 @@
   }
 }
 
-.customMargin{
-  margin: 11px;
-  margin: 0;
+.userName{
+  color:#1B305B;
+  font-weight: 550;
+  font-size: 30px;
 }
+
+.company{
+  font-weight: 550;
+}
+
 
 .border{
   margin: 11px;
@@ -37,9 +43,12 @@
 }
 
 .profileInfo{
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin-top: 0%;
   font-family: QuickSand;
+}
+
+.Buttons{
+  margin-top: 15%;
 }
 
 .ButtonIcon{
