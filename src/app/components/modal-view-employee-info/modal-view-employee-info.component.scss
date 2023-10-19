@@ -21,6 +21,15 @@
   }
 }
 
+ion-card-content{
+  padding: 0px;
+  margin-bottom: 20px;
+}
+
+ion-card-header{
+  margin-bottom: 20px;
+}
+
 ion-input{
   font-family: QuickSand;
 }
@@ -29,5 +38,10 @@ ion-card{
   font-family: QuickSand;
 }
 
+ion-item{
+  margin: 5%;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
 
 
