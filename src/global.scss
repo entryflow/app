@@ -31,6 +31,10 @@
   src: url('./assets/fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
 }
 
+*{
+  font-family: QuickSand;
+}
+
 ion-title{
   font-family: QuickSand;
 }

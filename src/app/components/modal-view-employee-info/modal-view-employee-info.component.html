@@ -16,6 +16,7 @@
         <ion-card-header>
           <ion-card-title style="text-align: center; top:10px;">{{employeeName}} {{employeeFirstName}} {{employeeLastName}}</ion-card-title>
           <ion-card-subtitle style="text-align: center; top:10px;">Empleado</ion-card-subtitle>
+
           <!--FOTO DE PERFIL-->
         <div class="card">
           <div class="header">
@@ -28,12 +29,11 @@
         </ion-card-header>
         <ion-card-content>
           <ion-list>
+
             <!--NUM CELULAR-->
             <ion-item lines = "none">
-
               <ion-label style="font-family: QuickSand; font-weight: 600;" position="stacked" color="primary">No. Celular</ion-label>
               <ion-input  [readonly]="true">{{employeePhone}}</ion-input>
-
             </ion-item>
 
                 <!--CORREO ELECTRONICO-->

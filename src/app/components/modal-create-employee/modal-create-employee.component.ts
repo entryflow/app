@@ -19,6 +19,7 @@ import { Camera, CameraResultType } from '@capacitor/camera';
 export class ModalCreateEmployeeComponent implements OnInit {
   selectedImageDataUrl!: any;
   fileBlob!: File;
+  calendarActive: boolean = false;
 
   credentials = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
@@ -96,17 +97,17 @@ export class ModalCreateEmployeeComponent implements OnInit {
         presentationStyle: 'fullscreen',
         resultType: CameraResultType.DataUrl
       });
-  
+
       this.selectedImageDataUrl = image.dataUrl;
-      
-  
+
+
       const imageBlob = this.dataURItoBlob(image.dataUrl);
       this.fileBlob = new File([imageBlob], "1.jpeg", { type: 'image/jpeg' });
     }
     catch(error){
       console.log(error);
     }
-    
+
   }
 
   dataURItoBlob(dataURI: any) {
@@ -116,6 +117,10 @@ export class ModalCreateEmployeeComponent implements OnInit {
       array.push(binary.charCodeAt(i));
     }
     return new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
+  }
+
+  isCalendarActive(){
+    this.calendarActive = !this.calendarActive;
   }
 
   ngOnInit(): void{}

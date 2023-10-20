@@ -1,62 +1,181 @@
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="cancel()" [strong]="true" color="danger">Cancelar</ion-button>
+      </ion-buttons>
+      <ion-title>Nuevo empleado</ion-title>
+      <ion-buttons slot="end">
+        <ion-button  type="submit" [strong]="true" color="success" (click)="confirm()" [disabled]="!credentials.valid">Aceptar</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="cancel()" [strong]="true" color="danger">Cancelar</ion-button>
-    </ion-buttons>
-    <ion-title>Crear empleado</ion-title>
-    <ion-buttons slot="end">
-      <ion-button  type="submit" [strong]="true" color="success" (click)="confirm()" [disabled]="!credentials.valid">Aceptar</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<ion-content mode="ios">
 
-<ion-content class="ion-padding">
-  <form [formGroup]="credentials" (ngSubmit)="confirm()">
-  <ion-item lines="none">
-    <ion-label position="stacked" color="primary">Foto de perfil</ion-label>
-    <div *ngIf="selectedImageDataUrl">
-      <img [src]="selectedImageDataUrl" style="width: 40%; margin-top:8px;" alt="Selected Image" (click)="takePicture()">
+  <!-- <form [formGroup]="credentials" (ngSubmit)="confirm()">
+    <ion-item >
+      <ion-label  color="primary">Foto de perfil</ion-label>
+      <div *ngIf="selectedImageDataUrl">
+        <img [src]="selectedImageDataUrl" style="width: 40%; margin-top:8px;" alt="Selected Image" (click)="takePicture()">
+      </div>
+      <div *ngIf="!selectedImageDataUrl">
+        <img style="width: 40%; margin-top:8px;" src="https://ionicframework.com/docs/img/demos/avatar.svg" (click)="takePicture()">
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  color="primary">Nombre</ion-label>
+      <ion-input type="text" placeholder="John" formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  color="primary">Apellido paterno</ion-label>
+      <ion-input type="text" placeholder="Doe" formControlName="middle_name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  color="primary">Apellido materno</ion-label>
+      <ion-input type="text" placeholder="Ipsum" formControlName="last_name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  color="primary">Número de telefono</ion-label>
+      <ion-input type="number" placeholder="664373218" formControlName="phone"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  color="primary">Correo electrónico</ion-label>
+      <ion-input type="text" placeholder="john.doe@gmail.com" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  color="primary">Número de control</ion-label>
+      <ion-input type="text" placeholder="2021859" formControlName="num_control"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  color="primary">Género</ion-label>
+      <ion-select okText="Aceptar" cancelText="Cancelar" formControlName="gender">
+        <ion-select-option value="M">Masculino</ion-select-option>
+        <ion-select-option value="F">Femenino</ion-select-option>
+        <ion-select-option value="O">Otro</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  color="primary">Fecha de nacimiento</ion-label>
+      <ion-datetime presentation="date" formControlName="birth_date"></ion-datetime>
+    </ion-item>
+  </form> -->
+
+  <ion-card style="box-shadow: none !important;">
+    <ion-card-header>
+      <ion-card-title style="text-align: center; top:10px;">Nuevo empleado</ion-card-title>
+      <ion-card-subtitle style="text-align: center; top:10px;">Empleado</ion-card-subtitle>
+
+      <!--FOTO DE PERFIL-->
+    <div class="card">
+      <div class="header">
+        <div class="avatar">
+            <img src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="">
+
+            <ion-button class="buttonNewImage">
+              <ion-icon name="camera"></ion-icon>
+            </ion-button>
+
+        </div>
+      </div>
     </div>
-    <div *ngIf="!selectedImageDataUrl">
-      <img style="width: 40%; margin-top:8px;" src="https://ionicframework.com/docs/img/demos/avatar.svg"  (click)="takePicture()">
-    </div>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked" color="primary">Nombre</ion-label>
-    <ion-input type="text" placeholder="John" formControlName="name"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked" color="primary">Apellido paterno</ion-label>
-    <ion-input type="text" placeholder="Doe" formControlName="middle_name"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked" color="primary">Apellido materno</ion-label>
-    <ion-input type="text" placeholder="Ipsum" formControlName="last_name"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked" color="primary">Número de telefono</ion-label>
-    <ion-input type="number" placeholder="664373218" formControlName="phone"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked" color="primary">Correo electrónico</ion-label>
-    <ion-input type="text" placeholder="john.doe@gmail.com" formControlName="email"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked" color="primary">Número de control</ion-label>
-    <ion-input type="text" placeholder="2021859" formControlName="num_control"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked" color="primary">Género</ion-label>
-    <ion-select  okText="Aceptar" cancelText="Cancelar" formControlName="gender">
-      <ion-select-option value="M">Masculino</ion-select-option>
-      <ion-select-option value="F">Femenino</ion-select-option>
-      <ion-select-option value="O">Otro</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked" color="primary">Fecha de nacimiento</ion-label>
-    <ion-datetime presentation="date" formControlName="birth_date" ></ion-datetime>
-  </ion-item>
-</form>
+
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+
+        <!--NOMBRE COMPLETO-->
+        <ion-item lines = "">
+          <ion-label style="font-family: QuickSand; font-weight: 600;"  position="stacked" color="primary">
+           <ion-icon name="person"></ion-icon>
+          Nombre completo</ion-label>
+          <ion-input placeholder="Nombre(s)"></ion-input>
+
+        </ion-item>
+
+
+        <ion-item>
+          <ion-input placeholder="Apellido Paterno"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input placeholder="Apellido Materno"></ion-input>
+        </ion-item>
+
+
+        <!--NUM CELULAR-->
+        <ion-item lines = "">
+          <ion-label style="font-family: QuickSand; font-weight: 600;"  position="stacked" color="primary">
+           <ion-icon name="call-sharp"></ion-icon>
+          Telefono</ion-label>
+          <ion-input placeholder="6611100822"></ion-input>
+        </ion-item>
+
+
+        <!--CORREO ELECTRONICO-->
+        <ion-item>
+          <ion-label style="font-family: QuickSand; font-weight: 600;" position="stacked" color="primary">
+            <ion-icon name="mail"></ion-icon>
+          E-mail</ion-label>
+          <ion-input placeholder="example@exam.com"></ion-input>
+        </ion-item>
+
+           <!--NUMERO DE CONTROL-->
+        <ion-item >
+           <ion-label style="font-family: QuickSand; font-weight: 600;" position="stacked" color="primary">
+              <ion-icon name="keypad"></ion-icon>
+            Numero de control</ion-label>
+           <ion-input placeholder="EXAMPLE1020201"></ion-input>
+        </ion-item>
+
+          <!--GENERO-->
+        <ion-item >
+          <ion-label style="font-family: QuickSand; font-weight: 600;" color="primary">
+            <ion-icon name="transgender"></ion-icon> Genero</ion-label>
+            <ion-select placeholder="Elegir" okText="Aceptar" cancelText="Cancelar" formControlName="gender">
+              <ion-select-option value="M">Masculino</ion-select-option>
+              <ion-select-option value="F">Femenino</ion-select-option>
+              <ion-select-option value="O">Otro</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+              <!--FECHA DE NACIMIENTO-->
+              <ion-accordion-group>
+
+                <ion-accordion value="colors">
+
+                  <ion-icon name="add-outline"></ion-icon>
+
+                  <ion-item slot="header">
+                    <ion-label style="font-family: QuickSand; font-weight: 600;" color="primary"><ion-icon name="calendar-number"></ion-icon> Fecha de nacimiento</ion-label>
+                    <ion-note slot="end" id="datetimeValue"></ion-note>
+                  </ion-item>
+
+
+                  <ion-datetime
+                    presentation="date"
+                    id="datetime"
+                    slot="content"
+                  ></ion-datetime>
+
+                </ion-accordion>
+
+              </ion-accordion-group>
+
+
+
+
+          <!-- <ion-datetime presentation="date" formControlName="birth_date"></ion-datetime> -->
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+
 </ion-content>
