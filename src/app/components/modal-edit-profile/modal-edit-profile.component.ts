@@ -15,11 +15,13 @@ import {FormBuilder,FormControl,Validators,FormArray} from '@angular/forms';
 
 export class ModalEditProfileComponent implements OnInit {
 
+  onlyLetters =  Validators.pattern('[A-Za-z ]+$|');
+
   newProfileInfo = this.formBuilder.nonNullable.group({
 
-    name: ['', [Validators.required, Validators.pattern('[A-Za-z ]+$')]],
-    first_name: ['', [Validators.required, Validators.pattern('[A-Za-z ]+$')]],
-    second_name: ['', [Validators.required, Validators.pattern('[A-Za-z ]+$')]],
+    name: ['', [Validators.required, this.onlyLetters]],
+    first_name: ['', [Validators.required, this.onlyLetters]],
+    second_name: ['', [Validators.required,this.onlyLetters]],
     phoneNumber: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
 
   });

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { IonAccordion, ModalController } from '@ionic/angular';
 import {
   FormBuilder,
   FormControl,
@@ -8,25 +8,33 @@ import {
 } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { FilePicker } from '@capawesome/capacitor-file-picker';
-import { format, parseISO } from 'date-fns';
+import { format, parseISO, set } from 'date-fns';
 import { Camera, CameraResultType } from '@capacitor/camera';
+
+import {NavController} from '@ionic/angular';
+
+import { IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal-create-employee',
   templateUrl: './modal-create-employee.component.html',
   styleUrls: ['./modal-create-employee.component.scss'],
 })
+
 export class ModalCreateEmployeeComponent implements OnInit {
+
+
   selectedImageDataUrl!: any;
   fileBlob!: File;
-  calendarActive: boolean = false;
+
+  onlyLetters =  Validators.pattern('[A-Za-z ]+$|^(?!.* )');
 
   credentials = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
-    name: ['', [Validators.required]],
-    middle_name: ['', [Validators.required]],
-    last_name: ['', [Validators.required]],
-    phone: ['', [Validators.required]],
+    name: ['', [Validators.required, this.onlyLetters]],
+    middle_name: ['', [Validators.required, this.onlyLetters]],
+    last_name: ['', [Validators.required, this.onlyLetters]],
+    phone: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
     num_control: ['', [Validators.required]],
     gender: ['', [Validators.required]],
     birth_date: ['', [Validators.required]],
@@ -57,7 +65,15 @@ export class ModalCreateEmployeeComponent implements OnInit {
     return this.credentials.controls.birth_date;
   }
 
-  constructor(private modalCtrl: ModalController, private fb: FormBuilder) {}
+  @ViewChild(IonContent) content?: IonContent;
+
+  constructor(private modalCtrl: ModalController, private fb: FormBuilder, private navCtrl: NavController) {}
+
+
+  scrollToAccordion() {
+    console.log('scrolling');
+    this.content?.scrollToPoint(0, window.innerHeight, 500);
+  }
 
   cancel() {
     this.modalCtrl.dismiss(null, 'cancel');
@@ -119,9 +135,8 @@ export class ModalCreateEmployeeComponent implements OnInit {
     return new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
   }
 
-  isCalendarActive(){
-    this.calendarActive = !this.calendarActive;
+  ngOnInit(): void{
+
   }
 
-  ngOnInit(): void{}
 }

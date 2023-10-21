@@ -18,6 +18,7 @@ import { ModalViewEmployeeInfoComponent } from './components/modal-view-employee
 
 
 
+
 @NgModule({
 
   declarations: [
@@ -26,7 +27,7 @@ import { ModalViewEmployeeInfoComponent } from './components/modal-view-employee
     ModalEditEmployeeComponent,
     ModalEditProfileComponent,
     ModalViewEmployeeInfoComponent,
-    
+
   ],
 
   imports: [
@@ -37,7 +38,8 @@ import { ModalViewEmployeeInfoComponent } from './components/modal-view-employee
      FormsModule,
      ReactiveFormsModule,
      NgApexchartsModule,
-     HttpClientModule
+     HttpClientModule,
+
     ],
 
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

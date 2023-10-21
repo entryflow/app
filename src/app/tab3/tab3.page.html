@@ -3,7 +3,7 @@
     <ion-title>Empleados</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="onModalCreate()">
-        <ion-icon name="add-outline"></ion-icon>
+        <ion-icon slot="icon-only" name="person-add-outline"></ion-icon>
        </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -38,17 +38,18 @@
         </ion-item>
 
         <!--opciones del sliding-->
-        <ion-item-options side="start">
+      <ion-item-options side="start">
 
         <!--opcion de editar -->
         <ion-item-option (click)="onModalEdit(employee.id)">
-          <ion-icon name="create-outline" slot="icon-only"></ion-icon>
+          <ion-icon slot="icon-only" name="create-outline"></ion-icon>
         </ion-item-option>
 
         <!--opcion de eliminar-->
         <ion-item-option color="danger" (click)="onAlert(employee.id,employee.name,employee.middle_name,employee.last_name)">
           <ion-icon slot="icon-only" name="trash"></ion-icon>
         </ion-item-option>
+
       </ion-item-options>
 
     </ion-item-sliding>
