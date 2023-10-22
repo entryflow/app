@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonAccordion, ModalController } from '@ionic/angular';
+
 import {
   FormBuilder,
   FormControl,
   Validators,
   FormArray,
 } from '@angular/forms';
+
 import { ApiService } from '../../services/api.service';
 import { FilePicker } from '@capawesome/capacitor-file-picker';
 import { format, parseISO, set } from 'date-fns';
@@ -23,11 +25,11 @@ import { IonContent } from '@ionic/angular';
 
 export class ModalCreateEmployeeComponent implements OnInit {
 
-
+  @ViewChild(IonContent) content?: IonContent;
   selectedImageDataUrl!: any;
   fileBlob!: File;
 
-  onlyLetters =  Validators.pattern('[A-Za-z ]+$|^(?!.* )');
+  onlyLetters =  Validators.pattern(/^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$/);
 
   credentials = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
@@ -65,7 +67,6 @@ export class ModalCreateEmployeeComponent implements OnInit {
     return this.credentials.controls.birth_date;
   }
 
-  @ViewChild(IonContent) content?: IonContent;
 
   constructor(private modalCtrl: ModalController, private fb: FormBuilder, private navCtrl: NavController) {}
 

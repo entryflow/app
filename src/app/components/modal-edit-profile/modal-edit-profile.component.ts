@@ -49,6 +49,8 @@ export class ModalEditProfileComponent implements OnInit {
     return this.newProfileInfo.controls.phoneNumber;
   }
 
+
+
   cancel() {
     this.modalCtrl.dismiss(null, 'cancel');
   }

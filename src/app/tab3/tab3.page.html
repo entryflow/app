@@ -41,7 +41,15 @@
       <ion-item-options side="start">
 
         <!--opcion de editar -->
-        <ion-item-option (click)="onModalEdit(employee.id)">
+        <ion-item-option (click)="onModalEdit(employee.name,
+        employee.middle_name,
+        employee.last_name,
+        employee.phone,
+        employee.email,
+        employee.num_control,
+        employee.gender,
+        employee.birth_date,
+        employee.avatar)">
           <ion-icon slot="icon-only" name="create-outline"></ion-icon>
         </ion-item-option>
 
