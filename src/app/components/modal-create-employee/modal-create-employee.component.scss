@@ -22,6 +22,14 @@
 
 }
 
+.centered-div {
+  text-align: center;
+  background-color: #e0e0e0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 ion-accordion{
   font-family: QuickSand;
   color: #1B305B;
@@ -79,3 +87,5 @@ ion-item{
 ion-accordion {
   margin: 0 auto;
 }
+
+
