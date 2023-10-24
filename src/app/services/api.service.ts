@@ -19,7 +19,7 @@ export class ApiService {
     const body = `username=${data.email}&password=${data.password}`;
     try {
       const response = await this.http.post(`${this.API_URL}login`, body, { headers }).toPromise();
-      
+
       return response;
     } catch (error) {
       console.error('An error occurred:', error);
@@ -96,6 +96,8 @@ export class ApiService {
   }
 
   async createEmployees(data: any) {
+
+    //numero de la compañia
     let id: number = 1;
 
     const params = new HttpParams()
@@ -112,16 +114,60 @@ export class ApiService {
     const body = new FormData();
     body.append('image', data.image);
 
+    console.log(data);
+    console.log(params);
+
     try {
       const response = await this.http.post(`${this.API_URL}employees`, body, { params }).toPromise();
-      console.log(response);
+
+
       return response;
     } catch (error) {
       console.error('An error occurred:', error);
       throw error; // You can handle or rethrow the error as needed
     }
- 
+
+
+
   }
+
+  async updateEmployees(data: any, employeeID: string) {
+
+    //numero de la compañia
+    let id: number = 1;
+    let employeID: number = parseInt(employeeID);
+
+    const params = new HttpParams()
+    .set('employee_id', employeID)
+    .set('name', data.name)
+    .set('middle_name', data.middle_name)
+    .set('last_name', data.last_name)
+    .set('email', data.email)
+    .set('phone', data.phone)
+    .set('num_control', data.num_control)
+    .set('gender',data.gender)
+    .set('company', id)
+    .set('birth_date', data.birth_date);
+
+    const body = new FormData();
+    body.append('image', data.image);
+
+    console.log(data);
+    console.log(params);
+
+    try {
+      const response = await this.http.put(`${this.API_URL}employees/${employeeID}`, body, { params }).toPromise();
+      console.log(response);
+      console.log(data);
+      return response;
+    } catch (error) {
+      console.error('An error occurred:', error);
+      throw error; // You can handle or rethrow the error as needed
+    }
+
+
+  }
+
 
   async getUserInfo(token:any) {
     let data: any = [];
@@ -153,7 +199,7 @@ export class ApiService {
     await Preferences.get({ key: 'token' }).then((res) => {
       data = res.value;
     });
-    
+
     return data;
   }
 

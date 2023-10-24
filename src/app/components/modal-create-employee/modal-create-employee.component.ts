@@ -100,11 +100,17 @@ export class ModalCreateEmployeeComponent implements OnInit {
 
     data['birth_date'] = formattedDate;
 
+
+
     if (this.selectedImageDataUrl) {
       data['image'] = this.fileBlob;
     }
 
-    this.modalCtrl.dismiss(data, 'confirm');
+    console.log(data)
+    console.log(this.fileBlob)
+
+
+     this.modalCtrl.dismiss(data, 'confirm');
   }
 
   async takePicture() {

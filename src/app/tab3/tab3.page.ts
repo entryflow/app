@@ -48,7 +48,6 @@ export class Tab3Page {
   }
 
   constructor(
-
     private alertController: AlertController,
     private modalController: ModalController,
     private api: ApiService,
@@ -85,7 +84,7 @@ export class Tab3Page {
     const alert = await this.alertController.create({
       header: 'Eliminar empleado',
       subHeader: '',
-      message: '¿Estas seguro de eliminar a ' + name + ' ' + middle_name + ' ' + last_name + '',
+      message: '¿Estas seguro de eliminar a ' + name + ' ' + middle_name + ' ' + last_name + '?',
       buttons: [
         {
           text: 'Cancelar',
@@ -165,7 +164,10 @@ export class Tab3Page {
 
   }
 
-  async onModalEdit(employeeName: any, employeeFirstName: any, employeeLastName: any, employeePhone: any, employeeEmail: any, employeeControlNumber: any, employeeGender: any, employeeBirthDate: any, employeeAvatar: any) {
+  async onModalEdit(employeeName: any, employeeFirstName: any, employeeLastName: any, employeePhone: any, employeeEmail: any, employeeControlNumber: any, employeeGender: any, employeeBirthDate: any, employeeAvatar: any, employeeID: any) {
+
+    console.log(employeeName, employeeFirstName, employeeLastName, employeePhone, employeeEmail, employeeControlNumber, employeeGender, employeeBirthDate, employeeAvatar, employeeID);
+
     const modal = await this.modalController.create({
       component: ModalEditEmployeeComponent,
       animated: true,
@@ -183,15 +185,36 @@ export class Tab3Page {
       },
     });
 
-    console.log(employeeBirthDate);
+    await modal.present();
+
+    const { data } = await modal.onWillDismiss();
+
+    if (data) {
+      const loading = await this.LoadingController.create({
+        message: 'Cargando...',
+        mode: 'ios',
+      }).then(async (loadingElement) => {
+        loadingElement.present();
+        await this.api.updateEmployees(data, employeeID);
+        const toast = await this.toastController.create({
+          message: 'Empleado editado correctamente',
+          duration: 2000,
+          mode: 'ios',
+          color: 'success',
+          position: 'top',
+          animated: true,
+        });
+        await this.refreshEmployees();
+
+        await toast.present();
+        loadingElement.dismiss();
+      });
+    }
 
 
-    return await modal.present();
   }
 
   async onModalViewEmployeeInfo(employeeName: any, employeeFirstName: any, employeeLastName: any, employeePhone: any, employeeEmail: any, employeeControlNumber: any, employeeGender: any, employeeBirthDate: any, employeeAvatar: any) {
-
-    try{
 
       const modal = await this.modalController.create({
         component: ModalViewEmployeeInfoComponent,
@@ -210,12 +233,6 @@ export class Tab3Page {
       });
 
       return await modal.present();
-
-    }catch(e){
-      console.log(e)
-    }
-
-
 
   }
 

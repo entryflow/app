@@ -11,6 +11,9 @@ import { HttpClientModule } from  '@angular/common/http';
 
 import { NgApexchartsModule } from "ng-apexcharts";
 
+import fetch from 'isomorphic-unfetch'
+
+
 import { ModalCreateEmployeeComponent } from './components/modal-create-employee/modal-create-employee.component';
 import { ModalEditEmployeeComponent } from './components/modal-edit-employee/modal-edit-employee.component';
 import { ModalEditProfileComponent } from './components/modal-edit-profile/modal-edit-profile.component';

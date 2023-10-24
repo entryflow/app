@@ -73,11 +73,20 @@ export class Tab4Page implements OnInit {
   async onModalEdit(){
     const modal = await this.modalController.create({
       component: ModalEditProfileComponent,
-      mode:'ios'
+      mode:'ios',
+      componentProps: {
+        profileName: this.profile.name,
+        profileMiddleName: this.profile.middle_name,
+        profileLastName: this.profile.last_name,
+        profileEmail: this.profile.email,
+        profileAvatar: this.profile.avatar
+      }
+
     });
 
     return await modal.present();
   }
+
   async logout(){
     const loading = await this.loadingController.create({
       message: 'Cerrando sesión...',
@@ -90,4 +99,5 @@ export class Tab4Page implements OnInit {
     });
 
   }
+
 }

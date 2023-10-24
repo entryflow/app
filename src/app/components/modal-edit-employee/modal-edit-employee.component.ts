@@ -36,23 +36,7 @@ export class ModalEditEmployeeComponent  implements OnInit {
    }
 
   onlyLetters =  Validators.pattern(/^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$/);
-
-  credentials = this.formBuilder.nonNullable.group({
-
-    email: [this.employeeEmail, [Validators.required, Validators.email]],
-    name: [this.employeeName, [Validators.required, this.onlyLetters]],
-    middle_name: [this.employeeFirstName, [Validators.required, this.onlyLetters]],
-    last_name: [this.employeeLastName, [Validators.required, this.onlyLetters]],
-    phone: [this.employeePhone, [Validators.required, Validators.pattern('[0-9]{10}')]],
-    num_control: [this.employeeControlNumber, [Validators.required]],
-    gender: [this.employeeGender, [Validators.required]],
-    birth_date: [this.employeeBirthDate, [Validators.required]],
-
-  });
-
-  ionViewWillEnter(){
-    document.getElementById('datetime')?.setAttribute('value', this.employeeBirthDate!);
-  }
+  credentials: any;
 
   get email() {
     return this.credentials.controls.email;
@@ -92,6 +76,7 @@ export class ModalEditEmployeeComponent  implements OnInit {
         resultType: CameraResultType.DataUrl
       });
 
+
       this.selectedImageDataUrl = image.dataUrl;
 
       const imageBlob = this.dataURItoBlob(image.dataUrl);
@@ -117,7 +102,7 @@ export class ModalEditEmployeeComponent  implements OnInit {
     this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  confirm() {
+  async confirm() {
     let data: any = [];
     data['email'] = this.credentials.value['email'];
     data['name'] = this.credentials.value['name'];
@@ -131,22 +116,89 @@ export class ModalEditEmployeeComponent  implements OnInit {
     let datetime  = new Date(date);
     const year = datetime.getFullYear();
     const month = (datetime.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-based
-    const day = datetime.getDate().toString().padStart(2, '0');
+    const day = (datetime.getDate() + 1).toString().padStart(2, '0');
 
     const formattedDate = `${year}-${month}-${day}`;
 
     data['birth_date'] = formattedDate;
 
     if (this.selectedImageDataUrl) {
+      //si se toma una nueva foto
+      console.log(this.fileBlob);
+
       data['image'] = this.fileBlob;
+
+    } else {
+
+      if (this.employeeAvatar != null) {
+
+        const fileBlob = await this.loadImageFromUrlAndConvertToBlob(this.employeeAvatar);
+
+        console.log(fileBlob)
+
+        data['image'] = fileBlob;
+
+      } else if (this.fileBlob !== null) {
+
+        console.log(this.fileBlob)
+
+        data['image'] = this.fileBlob;
+
+      }
+
     }
+
+
 
     this.modalCtrl.dismiss(data, 'confirm');
   }
 
+  async loadImageFromUrlAndConvertToBlob(imageUrl: string): Promise<File | null> {
+    try {
+      // Realizar una solicitud HTTP para obtener la imagen desde la URL
+      const response = await fetch(imageUrl);
+
+      if (!response.ok) {
+        throw new Error(`No se pudo cargar la imagen: ${response.status} - ${response.statusText}`);
+      }
+
+      // Convertir la respuesta de la imagen a una matriz de bytes (Uint8Array)
+      const arrayBuffer = await response.arrayBuffer();
+      const uint8Array = new Uint8Array(arrayBuffer);
+
+      // Crear un Blob a partir de la matriz de bytes
+      const imageBlob = new Blob([uint8Array], { type: 'image/jpeg' });
+
+      // Crear un archivo (File) a partir del Blob
+      const fileName = '1.jpeg';
+      const fileBlob = new File([imageBlob], fileName, { type: 'image/jpeg' });
+
+      return fileBlob;
+    } catch (error) {
+      console.error('Error al cargar la imagen:', error);
+      return null; // Devolver null en caso de error
+    }
+  }
+
+
   // create an instance of ProductModel instance by name variable model
 
   // set the product name with custom value as below on ngOninit fuction
-  ngOnInit ():void {}
+  ngOnInit ():void {
+
+    this.credentials = this.formBuilder.nonNullable.group({
+
+      email: [this.employeeEmail, [Validators.required, Validators.email]],
+      name: [this.employeeName, [Validators.required, this.onlyLetters]],
+      middle_name: [this.employeeFirstName, [Validators.required, this.onlyLetters]],
+      last_name: [this.employeeLastName, [Validators.required, this.onlyLetters]],
+      phone: [this.employeePhone, [Validators.required, Validators.pattern('[0-9]{10}')]],
+      num_control: [this.employeeControlNumber, [Validators.required]],
+      gender: [this.employeeGender, [Validators.required]],
+      birth_date: [this.employeeBirthDate, [Validators.required]],
+
+    });
+
+  }
 
 }

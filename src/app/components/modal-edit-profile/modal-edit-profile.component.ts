@@ -15,19 +15,32 @@ import {FormBuilder,FormControl,Validators,FormArray} from '@angular/forms';
 
 export class ModalEditProfileComponent implements OnInit {
 
+  public selectedImageDataUrl: any;
+
   onlyLetters =  Validators.pattern('[A-Za-z ]+$|');
+
+  public profileName?: any;
+  public profileMiddleName?: any;
+  public profileLastName?: any;
+  public profileEmail?: any;
+  public profileAvatar?: any;
+
 
   newProfileInfo = this.formBuilder.nonNullable.group({
 
     name: ['', [Validators.required, this.onlyLetters]],
-    first_name: ['', [Validators.required, this.onlyLetters]],
-    second_name: ['', [Validators.required,this.onlyLetters]],
-    phoneNumber: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
+    middle_name: ['', [Validators.required, this.onlyLetters]],
+    last_name: ['', [Validators.required, this.onlyLetters]],
+    email: ['', [Validators.required, Validators.email]],
 
   });
 
   constructor(private formBuilder:FormBuilder, private modalCtrl:ModalController)
   {
+
+  }
+
+  takePicture(){
 
   }
 
@@ -37,18 +50,17 @@ export class ModalEditProfileComponent implements OnInit {
     return this.newProfileInfo.controls.name;
   }
 
-  get first_name() {
-    return this.newProfileInfo.controls.first_name;
+  get middle_name() {
+    return this.newProfileInfo.controls.middle_name;
   }
 
-  get second_name() {
-    return this.newProfileInfo.controls.second_name;
+  get last_name() {
+    return this.newProfileInfo.controls.last_name;
   }
 
-  get phoneNumber() {
-    return this.newProfileInfo.controls.phoneNumber;
+  get email(){
+    return this.newProfileInfo.controls.email;
   }
-
 
 
   cancel() {
