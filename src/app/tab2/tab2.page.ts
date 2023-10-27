@@ -10,6 +10,9 @@ import { ChartComponent } from 'ng-apexcharts';
 
 export class Tab2Page {
 
+  chartSize = 100;
+  chartFontSize = '100b';
+
   constructor()
   {}
 
@@ -21,11 +24,14 @@ export class Tab2Page {
 
     chart: {
         fontFamily: 'QuickSand',
-      height: 200,
+      height: this.chartSize,
       type: 'radialBar',
       toolbar: {
         show: false
-      }
+      },
+      sparkline: {
+      enabled: true
+    }
     },
 
     plotOptions: {
@@ -74,7 +80,7 @@ export class Tab2Page {
               return (val+"%");
             },
             color: '#111',
-            fontSize: '200%',
+            fontSize: this.chartFontSize,
             show: true,
           }
         }
@@ -111,47 +117,197 @@ export class Tab2Page {
     };
 
     const options1 = {
+      series: [64],
+
       chart: {
+          fontFamily: 'QuickSand',
+        height: this.chartSize,
         type: 'radialBar',
-        height: 300,
-      width: 300,
+        toolbar: {
+          show: false
+        },
+        sparkline: {
+        enabled: true
+      }
       },
-      series: [44],
-      labels: ['Ultima semana'],
-      colors: ['#F85F6A'],
-      responsive: [{
-        breakpoint: 480,
-        options: {
-          chart: {
-            width: 200
+
+      plotOptions: {
+        radialBar: {
+          startAngle: 0,
+          endAngle: 360,
+           hollow: {
+            margin: 0,
+            size: '70%',
+            background: '#fff',
+            image: undefined,
+            imageOffsetX: 0,
+            imageOffsetY: 0,
+            position: 'front',
+            dropShadow: {
+              enabled: false,
+              top: 3,
+              left: 0,
+              blur: 4,
+              opacity: 0.24
+            }
           },
-          legend: {
-            position: 'bottom'
+          track: {
+            background: '#EEF0F2',
+            strokeWidth: '67%',
+            margin: 0, // margin is in pixels
+            dropShadow: {
+              enabled: false,
+              top: -3,
+              left: 0,
+              blur: 4,
+              opacity: 0.35
+            }
+          },
+
+          dataLabels: {
+            show: true,
+            name: {
+              offsetY: 0,
+              show: true,
+              color: '#888',
+              fontSize: '17px',
+            },
+            value: {
+              formatter: function(val: string) {
+                return (val+"%");
+              },
+              color: '#111',
+              fontSize: this.chartFontSize,
+              show: true,
+            }
           }
         }
-      }]
+      },
+      theme: {
+        mode: 'light',
+        palette: 'palette10',
+        monochrome: {
+            enabled: true,
+            color: '#7FE1AD',
+            shadeTo: 'dark',
+            shadeIntensity: 0.65
+        },
+      },
+
+      fill: {
+        type: 'solid',
+        gradient: {
+          shade: 'dark',
+          type: 'horizontal',
+          shadeIntensity: 0.5,
+          gradientToColors: ['#ABE5A1'],
+          inverseColors: true,
+          opacityFrom: 1,
+          opacityTo: 1,
+          stops: [0, 100]
+        }
+      },
+      stroke: {
+        lineCap: 'round'
+      },
+      labels: ['Este mes'],
     };
 
     const options2 = {
+      series: [64],
+
       chart: {
+          fontFamily: 'QuickSand',
+        height: this.chartSize,
         type: 'radialBar',
-        height: 300,
-      width: 300,
+        toolbar: {
+          show: false
+        },
+        sparkline: {
+        enabled: true
+      }
       },
-      series: [80],
-      labels: [''],
-      colors: ['#5F6AF8'],
-      responsive: [{
-        breakpoint: 480,
-        options: {
-          chart: {
-            width: 200
+
+      plotOptions: {
+        radialBar: {
+          startAngle: 0,
+          endAngle: 360,
+           hollow: {
+            margin: 0,
+            size: '70%',
+            background: '#fff',
+            image: undefined,
+            imageOffsetX: 0,
+            imageOffsetY: 0,
+            position: 'front',
+            dropShadow: {
+              enabled: false,
+              top: 3,
+              left: 0,
+              blur: 4,
+              opacity: 0.24
+            }
           },
-          legend: {
-            position: 'bottom'
+          track: {
+            background: '#EEF0F2',
+            strokeWidth: '67%',
+            margin: 0, // margin is in pixels
+            dropShadow: {
+              enabled: false,
+              top: -3,
+              left: 0,
+              blur: 4,
+              opacity: 0.35
+            }
+          },
+
+          dataLabels: {
+            show: true,
+            name: {
+              offsetY: -10,
+              show: true,
+              color: '#888',
+              fontSize: '17px',
+            },
+            value: {
+              formatter: function(val: string) {
+                return (val+"%");
+              },
+              color: '#111',
+              fontSize: this.chartFontSize,
+              show: true,
+            }
           }
         }
-      }]
+      },
+      theme: {
+        mode: 'light',
+        palette: 'palette10',
+        monochrome: {
+            enabled: true,
+            color: '#7FE1AD',
+            shadeTo: 'dark',
+            shadeIntensity: 0.65
+        },
+      },
+
+      fill: {
+        type: 'solid',
+        gradient: {
+          shade: 'dark',
+          type: 'horizontal',
+          shadeIntensity: 0.5,
+          gradientToColors: ['#ABE5A1'],
+          inverseColors: true,
+          opacityFrom: 1,
+          opacityTo: 1,
+          stops: [0, 100]
+        }
+      },
+      stroke: {
+        lineCap: 'round'
+      },
+      labels: ['Este mes'],
     };
 
     var stack = {
