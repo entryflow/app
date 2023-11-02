@@ -1,82 +1,75 @@
 <ion-content [fullscreen]="true" mode = "ios" class="ion-padding">
 
-
-
-  <div color = "dark" style = "font-weight: 600;">
-    <h1 style=" padding:0px; margin:0px;">
+  <div color = "dark">
+    <h1 style=" padding:0px; margin:0px; margin-top:10%; font-weight: 600;" >
       Reportes
     </h1>
     <ion-item style="margin-left:-10px; padding:0px;" >
-      <h4 slot = "end" style=" padding:0px; margin:0px;">
+      <h6  slot = "end" style=" padding:0px; margin:0px; ">
         Faltas
-      </h4>
+      </h6>
     </ion-item>
   </div>
 
-
  <ion-grid>
 
-  <ion-row style="text-align: center; font-size: 14px; color:#ABB5BE ; font-weight: 550;">
+  <ion-row style="margin-top:5%;text-align: center; font-size: 14px; color:#ABB5BE ; font-weight: 550;">
 
-    <ion-col style=" padding:0px; margin:0px;">
-      <p>
+    <ion-col style="padding:0px; margin:0px;">
+      <p style="padding:0px; margin:0px;">
         Este mes
       </p>
     </ion-col>
 
     <ion-col style=" padding:0px; margin:0px;">
-      <p>
+      <p style=" padding:0px; margin:0px;">
         Ultima semana
       </p>
     </ion-col>
     <ion-col style=" padding:0px; margin:0px;">
-      <p>
+      <p style=" padding:0px; margin:0px;">
         Ultimo mes
       </p>
     </ion-col>
   </ion-row>
 
-  <ion-row>
+  <ion-row style="margin-top: 1%; ">
+
     <ion-col class="entryData" style=" padding:0px; margin:0px;">
 
-      <div id="chartContainer">
-        <!--GRAFICA 1-->
-        <div id="chContainer1">
           <div id="radialChart1" class="chart"></div>
-        </div>
-     </div>
 
-    </ion-col >
+        </ion-col >
 
     <ion-col class="entryData" style=" padding:0px; margin:0px;">
 
-      <div id="chartContainer">
-        <!--GRAFICA 1-->
-        <div id="chContainer1">
           <div id="chart1" class="chart"></div>
-        </div>
-     </div>
 
     </ion-col>
     <ion-col class="entryData" style=" padding:0px; margin:0px;">
 
-      <div id="chartContainer">
-        <!--GRAFICA 1-->
-        <div id="chContainer1">
           <div id="chart2" class="chart"></div>
-        </div>
-     </div>
 
     </ion-col>
   </ion-row>
-
 </ion-grid>
 
+<ion-item style="margin-left:-10px; padding:0px; margin-top: 5%;" >
+  <h6  slot = "end" style=" padding:0px; margin:0px; ">
+    Faltas por día
+  </h6>
+</ion-item>
 
   <!--ultima grafica-->
-  <div id="chartStack">
-    <div id="chartStack" class="chart"></div>
-  </div>
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <div id="chartStack" class="chart"></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 
 </ion-content>

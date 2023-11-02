@@ -3,6 +3,13 @@ import { ModalController,AlertController,LoadingController } from '@ionic/angula
 import { ModalEditProfileComponent } from '../components/modal-edit-profile/modal-edit-profile.component';
 import { ApiService } from '../services/api.service';
 import { Router } from '@angular/router';
+
+import {
+  ToastController,
+} from '@ionic/angular';
+
+
+
 @Component({
   selector: 'app-tab4',
   templateUrl: './tab4.page.html',
@@ -17,7 +24,9 @@ export class Tab4Page implements OnInit {
     private modalController:ModalController,
     private api:ApiService,
     private router:Router,
-    private loadingController:LoadingController)
+    private loadingController:LoadingController
+
+    )
   {}
 
   ngOnInit() {}
@@ -99,5 +108,10 @@ export class Tab4Page implements OnInit {
     });
 
   }
+
+
+
+
+
 
 }

@@ -120,7 +120,7 @@ export class Tab2Page {
     };
 
     const options1 = {
-      series: [64],
+      series: [40],
 
       chart: {
           fontFamily: 'QuickSand',
@@ -180,8 +180,9 @@ export class Tab2Page {
             formatter: function(val: string) {
               return (val+"%");
             },
-            color: '#111',
-            fontSize: this.chartFontSize,
+            color: '#F85F6A',
+            fontSize: '18px',
+            fontWeight: 650,
             show: true,
           }
         }
@@ -218,7 +219,7 @@ export class Tab2Page {
     };
 
     const options2 = {
-      series: [64],
+      series: [90],
 
       chart: {
           fontFamily: 'QuickSand',
@@ -278,8 +279,9 @@ export class Tab2Page {
               formatter: function(val: string) {
                 return (val+"%");
               },
-              color: '#111',
-              fontSize: this.chartFontSize,
+              color: '#5F6AF8',
+              fontSize: '18px',
+              fontWeight: 650,
               show: true,
             }
           }
@@ -316,21 +318,25 @@ export class Tab2Page {
     };
 
     var stack = {
+
       series: [
         {
           name: 'Asistencias',
-          group: 'asistencias',
-          data: [1, 2, 3, 4, 5]
+          group: 'Asistencias',
+          data: [12, 10, 13, 14, 15],
+
         },
         {
           name: 'Faltas',
-          group: 'faltas',
-          data: [1, 2, 3, 4, 5]
-        },
+          group: 'Faltas',
+          data: [2, 0, 3, 4, 5]
+        }
+
       ],
       chart: {
+        fontFamily: 'QuickSand',
         type: 'bar',
-        height: 350,
+        height: 150,
         stacked: true,
       },
       stroke: {
@@ -349,29 +355,44 @@ export class Tab2Page {
       },
       xaxis: {
         categories: [
-          'Lunes',
-          'Martes',
-          'Miércoles',
-          'Jueves',
-          'Viernes',
-        ]
+          'Lun',
+          'Mar',
+          'Mie',
+          'Jue',
+          'Vie',
+
+        ],
+        axisBorder: {
+          show: false
+        },
       },
       fill: {
         opacity: 1
       },
       colors: ['#F85F6A', '#ccc'], // Aquí se agrega el color para las faltas
-      yaxis: {
-        labels: {
-          formatter: (val: number) => {
-            return val ;
-          }
+      yaxis:{
+        show: false,
+        axisBorder: {
+          show: false
+        },
+        axisTicks: {
+          show: false
+        },
+        labels:{
+          show: false
         }
+      },
+      grid:{
+        show: false,
+        enable: false,
+        padding: { left: -1, right: -1, top: 0, bottom: -12},
       },
       legend: {
         position: 'top',
-        horizontalAlign: 'left'
       }
+
     };
+
 
 
     const radialChart1 = new ApexCharts(document.getElementById('radialChart1'), options);
