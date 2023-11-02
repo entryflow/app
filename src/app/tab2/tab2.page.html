@@ -1,20 +1,43 @@
-<ion-content [fullscreen]="true" mode = "ios">
-
-  <h1 color = "dark" >
-    Reportes
-  </h1>
-
-  <ion-item style = "text-align: end;">
-    <ion-label>
-      <p>Faltas</p>
-    </ion-label>
-  </ion-item>
+<ion-content [fullscreen]="true" mode = "ios" class="ion-padding">
 
 
- <ion-grid style="margin-top: 5%;">
+
+  <div color = "dark" style = "font-weight: 600;">
+    <h1 style=" padding:0px; margin:0px;">
+      Reportes
+    </h1>
+    <ion-item style="margin-left:-10px; padding:0px;" >
+      <h4 slot = "end" style=" padding:0px; margin:0px;">
+        Faltas
+      </h4>
+    </ion-item>
+  </div>
+
+
+ <ion-grid>
+
+  <ion-row style="text-align: center; font-size: 14px; color:#ABB5BE ; font-weight: 550;">
+
+    <ion-col style=" padding:0px; margin:0px;">
+      <p>
+        Este mes
+      </p>
+    </ion-col>
+
+    <ion-col style=" padding:0px; margin:0px;">
+      <p>
+        Ultima semana
+      </p>
+    </ion-col>
+    <ion-col style=" padding:0px; margin:0px;">
+      <p>
+        Ultimo mes
+      </p>
+    </ion-col>
+  </ion-row>
 
   <ion-row>
-    <ion-col class="entryData">
+    <ion-col class="entryData" style=" padding:0px; margin:0px;">
 
       <div id="chartContainer">
         <!--GRAFICA 1-->
@@ -25,7 +48,7 @@
 
     </ion-col >
 
-    <ion-col class="entryData">
+    <ion-col class="entryData" style=" padding:0px; margin:0px;">
 
       <div id="chartContainer">
         <!--GRAFICA 1-->
@@ -35,7 +58,7 @@
      </div>
 
     </ion-col>
-    <ion-col class="entryData">
+    <ion-col class="entryData" style=" padding:0px; margin:0px;">
 
       <div id="chartContainer">
         <!--GRAFICA 1-->

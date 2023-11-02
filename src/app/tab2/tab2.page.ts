@@ -10,7 +10,7 @@ import { ChartComponent } from 'ng-apexcharts';
 
 export class Tab2Page {
 
-  chartSize = 100;
+  chartSize = 110;
   chartFontSize = '100b';
 
   constructor()
@@ -70,20 +70,23 @@ export class Tab2Page {
         dataLabels: {
           show: true,
           name: {
-            offsetY: -10,
+            offsetY: 0,
             show: true,
             color: '#888',
-            fontSize: '17px',
+            fontSize: '0px',
           },
           value: {
+            offsetY: -10,
             formatter: function(val: string) {
               return (val+"%");
             },
-            color: '#111',
-            fontSize: this.chartFontSize,
+            color: '#7FE1AD',
+            fontSize: '18px',
+            fontWeight: 650,
             show: true,
           }
         }
+
       }
     },
     theme: {
@@ -113,7 +116,7 @@ export class Tab2Page {
     stroke: {
       lineCap: 'round'
     },
-    labels: ['Este mes'],
+    labels: [''],
     };
 
     const options1 = {
@@ -164,23 +167,24 @@ export class Tab2Page {
             }
           },
 
-          dataLabels: {
+                  dataLabels: {
+          show: true,
+          name: {
+            offsetY: 0,
             show: true,
-            name: {
-              offsetY: 0,
-              show: true,
-              color: '#888',
-              fontSize: '17px',
+            color: '#888',
+            fontSize: '14px',
+          },
+          value: {
+            offsetY: -10,
+            formatter: function(val: string) {
+              return (val+"%");
             },
-            value: {
-              formatter: function(val: string) {
-                return (val+"%");
-              },
-              color: '#111',
-              fontSize: this.chartFontSize,
-              show: true,
-            }
+            color: '#111',
+            fontSize: this.chartFontSize,
+            show: true,
           }
+        }
         }
       },
       theme: {
@@ -188,7 +192,7 @@ export class Tab2Page {
         palette: 'palette10',
         monochrome: {
             enabled: true,
-            color: '#7FE1AD',
+            color: '#F85F6A',
             shadeTo: 'dark',
             shadeIntensity: 0.65
         },
@@ -210,7 +214,7 @@ export class Tab2Page {
       stroke: {
         lineCap: 'round'
       },
-      labels: ['Este mes'],
+      labels: [''],
     };
 
     const options2 = {
@@ -264,12 +268,13 @@ export class Tab2Page {
           dataLabels: {
             show: true,
             name: {
-              offsetY: -10,
+              offsetY: -45,
               show: true,
               color: '#888',
-              fontSize: '17px',
+              fontSize: '14px',
             },
             value: {
+              offsetY: -10,
               formatter: function(val: string) {
                 return (val+"%");
               },
@@ -285,7 +290,7 @@ export class Tab2Page {
         palette: 'palette10',
         monochrome: {
             enabled: true,
-            color: '#7FE1AD',
+            color: '#5F6AF8',
             shadeTo: 'dark',
             shadeIntensity: 0.65
         },
@@ -307,7 +312,7 @@ export class Tab2Page {
       stroke: {
         lineCap: 'round'
       },
-      labels: ['Este mes'],
+      labels: [''],
     };
 
     var stack = {
