@@ -6,7 +6,7 @@ import { HttpClient,HttpHeaders,HttpParams } from  '@angular/common/http';
   providedIn: 'root',
 })
 export class ApiService {
-  API_URL = 'https://api-test-nlih-dev.fl0.io/';
+  API_URL = 'https://entryflow-api.redirectme.net/';
   constructor(private http: HttpClient) {}
 
   async login(data: any) {
