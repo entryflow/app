@@ -220,7 +220,6 @@ export class Tab2Page {
 
     const options2 = {
       series: [90],
-
       chart: {
           fontFamily: 'QuickSand',
         height: this.chartSize,
@@ -232,7 +231,6 @@ export class Tab2Page {
         enabled: true
       }
       },
-
       plotOptions: {
         radialBar: {
           startAngle: 0,
@@ -265,7 +263,6 @@ export class Tab2Page {
               opacity: 0.35
             }
           },
-
           dataLabels: {
             show: true,
             name: {
@@ -297,51 +294,36 @@ export class Tab2Page {
             shadeIntensity: 0.65
         },
       },
-
-      fill: {
-        type: 'solid',
-        gradient: {
-          shade: 'dark',
-          type: 'horizontal',
-          shadeIntensity: 0.5,
-          gradientToColors: ['#ABE5A1'],
-          inverseColors: true,
-          opacityFrom: 1,
-          opacityTo: 1,
-          stops: [0, 100]
-        }
-      },
       stroke: {
         lineCap: 'round'
       },
       labels: [''],
+
     };
 
     var stack = {
-
       series: [
         {
           name: 'Asistencias',
           group: 'Asistencias',
-          data: [12, 10, 13, 14, 15],
-
+          data: [12, 10, 13, 14, 11],
         },
         {
           name: 'Faltas',
           group: 'Faltas',
-          data: [2, 0, 3, 4, 5]
+          data: [2, 1, 3, 4, 5]
         }
-
       ],
+      stroke: {
+        show: true,
+        curve: 'smooth',
+        width: 2
+      },
       chart: {
         fontFamily: 'QuickSand',
         type: 'bar',
-        height: 150,
+        height: 200,
         stacked: true,
-      },
-      stroke: {
-        width: 1,
-        colors: ['#fff']
       },
       dataLabels: {
         formatter: (val: number) => {
@@ -359,17 +341,18 @@ export class Tab2Page {
           'Mar',
           'Mie',
           'Jue',
-          'Vie',
-
+          'Vie'
         ],
         axisBorder: {
           show: false
         },
       },
+      colors: ['#42F584', '#F54242'], // Aquí se agrega el color para las faltas
       fill: {
-        opacity: 1
+        colors: undefined,
+        opacity: 0.3,
+        type: 'solid',
       },
-      colors: ['#F85F6A', '#ccc'], // Aquí se agrega el color para las faltas
       yaxis:{
         show: false,
         axisBorder: {
@@ -389,11 +372,24 @@ export class Tab2Page {
       },
       legend: {
         position: 'top',
-      }
+        width: 0,
+        height: 0,
+        markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: undefined,
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0
+        },
+      },
+
 
     };
-
-
 
     const radialChart1 = new ApexCharts(document.getElementById('radialChart1'), options);
     const chart1 = new ApexCharts(document.getElementById('chart1'), options1);

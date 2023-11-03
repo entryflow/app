@@ -4,11 +4,9 @@ import { Browser } from '@capacitor/browser';
 
 
 @Component({
-
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss'],
-
+  styleUrls: ['tab1.page.scss']
 })
 
 export class Tab1Page implements OnInit {
@@ -106,7 +104,6 @@ export class Tab1Page implements OnInit {
       show: true,
       curve: 'smooth',
       width: 2
-
     },
 
     yaxis:{
@@ -139,7 +136,6 @@ export class Tab1Page implements OnInit {
       }
 
     },
-
     tooltip: {
       enabled: true,
       show: true,
@@ -147,13 +143,11 @@ export class Tab1Page implements OnInit {
         format: 'dd/MM/yyyy HH:mm'
       },
     },
-
     grid:{
       show: false,
       enable: false,
       padding: { left: -1, right: -1, top: 0, bottom: -12},
     },
-
     legend:{
       position: 'top',
       width: 0,

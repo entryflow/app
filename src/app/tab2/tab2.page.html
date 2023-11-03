@@ -1,26 +1,30 @@
-<ion-content [fullscreen]="true" mode = "ios" class="ion-padding">
-
-  <div color = "dark">
-    <h1 style=" padding:0px; margin:0px; margin-top:10%; font-weight: 600;" >
+<ion-header [translucent]="false" mode="ios">
+  <ion-toolbar>
+    <ion-title>
       Reportes
-    </h1>
-    <ion-item style="margin-left:-10px; padding:0px;" >
-      <h6  slot = "end" style=" padding:0px; margin:0px; ">
-        Faltas
-      </h6>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" mode = "ios" class="ion-padding" >
+
+ <div style="border: 1px solid #1B305B; border-radius: 10px; border-width: 2px; padding: 0;">
+
+  <div color = "dark" style="text-align: center;" slot="end">
+    <ion-card-title style="text-align: center; color: #1B305B; font-size: 18px;">Faltas</ion-card-title>
+    <ion-item style="margin-left: 0; margin-top: 0px; padding: 0px;" lines = "none">
     </ion-item>
   </div>
 
  <ion-grid>
 
-  <ion-row style="margin-top:5%;text-align: center; font-size: 14px; color:#ABB5BE ; font-weight: 550;">
+  <ion-row style="margin-top:5%; text-align: center; font-size: 14px; color:#ABB5BE; font-weight: 550;">
 
     <ion-col style="padding:0px; margin:0px;">
       <p style="padding:0px; margin:0px;">
         Este mes
       </p>
     </ion-col>
-
     <ion-col style=" padding:0px; margin:0px;">
       <p style=" padding:0px; margin:0px;">
         Ultima semana
@@ -33,43 +37,35 @@
     </ion-col>
   </ion-row>
 
-  <ion-row style="margin-top: 1%; ">
-
+  <ion-row style="margin-top: 1%;" >
     <ion-col class="entryData" style=" padding:0px; margin:0px;">
-
           <div id="radialChart1" class="chart"></div>
-
         </ion-col >
-
     <ion-col class="entryData" style=" padding:0px; margin:0px;">
-
           <div id="chart1" class="chart"></div>
-
     </ion-col>
     <ion-col class="entryData" style=" padding:0px; margin:0px;">
-
           <div id="chart2" class="chart"></div>
-
     </ion-col>
   </ion-row>
+
 </ion-grid>
 
-<ion-item style="margin-left:-10px; padding:0px; margin-top: 5%;" >
-  <h6  slot = "end" style=" padding:0px; margin:0px; ">
-    Faltas por día
-  </h6>
-</ion-item>
+</div>
 
-  <!--ultima grafica-->
 
-  <ion-grid>
+<div  style="border: 1px solid #1B305B; border-radius: 10px; border-width: 2px; padding: 0; margin-top: 5%; ">
 
-    <ion-row>
-      <ion-col>
-        <div id="chartStack" class="chart"></div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-item style="margin-left: 0px; margin-top: 5px; padding: 0px;" lines = "none">
+      <ion-card-title style="text-align: center; color: #1B305B; font-size: 18px;">Faltas por día</ion-card-title>
+  </ion-item>
+
+  <div id="chartStack" class="chart"></div>
+
+</div>
+
+
+
 
 
 </ion-content>
