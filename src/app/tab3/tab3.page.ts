@@ -79,7 +79,7 @@ export class Tab3Page {
   }
 
   //Funcion para mostrar alert
-  async onAlert(id: any,name: any, middle_name: any, last_name: any) {
+  async onAlert(id: any, name: any, middle_name: any, last_name: any) {
 
     const alert = await this.alertController.create({
       header: 'Eliminar empleado',
@@ -136,6 +136,7 @@ export class Tab3Page {
       animated: true,
       mode: 'ios',
     });
+
     await modal.present();
 
     const { data } = await modal.onWillDismiss();

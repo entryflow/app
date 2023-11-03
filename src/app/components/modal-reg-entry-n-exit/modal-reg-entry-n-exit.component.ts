@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-registro-es',
-  templateUrl: './registro-es.page.html',
-  styleUrls: ['./registro-es.page.scss'],
+  selector: 'app-modal-reg-entry-n-exit',
+  templateUrl: './modal-reg-entry-n-exit.component.html',
+  styleUrls: ['./modal-reg-entry-n-exit.component.scss'],
 })
-export class RegistroESPage implements OnInit {
+export class ModalRegEntryNExitComponent implements OnInit {
 
   video: any;
   canvas: any;
@@ -54,7 +54,7 @@ export class RegistroESPage implements OnInit {
   }
 
   startFaceDetection(video: any, canvas: any, deviceId: string) {
-    const socket = new WebSocket('wss://entryflow-api.redirectme.net:443/face-detection');
+    const socket = new WebSocket('wss://entryflow-api.redirectme.net:443/face-detection/1');
 
   if (socket) {
     // Connection opened
@@ -118,6 +118,5 @@ export class RegistroESPage implements OnInit {
 
   return socket;
 }
-
 
 }

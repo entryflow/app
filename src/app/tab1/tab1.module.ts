@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { Tab1PageRoutingModule } from './tab1-routing.module';
+import { ModalRegEntryNExitComponent } from '../components/modal-reg-entry-n-exit/modal-reg-entry-n-exit.component';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
@@ -17,6 +18,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     FormsModule,
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
+
   ],
   declarations: [Tab1Page],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

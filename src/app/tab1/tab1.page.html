@@ -67,16 +67,33 @@
     class="Button homeBorder"
     fill="clear"
     expand="block"
-    (click)="openUrl()"
+    id="present-alert"
     >
     <ion-icon slot="end" class="ButtonIcon" name="play-skip-forward-circle-outline" size="large"></ion-icon>
     <div class="ButtonText">
-      <ion-text>Empezar a registrar<br>
+      <ion-text >Empezar a registrar<br>
          entradas/salidas</ion-text>
     </div>
     </ion-button>
 
 
+    <ion-alert
+      trigger="present-alert"
+      header="Registrar"
+      [buttons]="alertButtons"
+      [inputs]="alertInputs"
+    ></ion-alert>
+
+
+
+
+<!--
+
+        <ion-select placeholder="Elegir">
+          <ion-select-option value = "1">Entrada</ion-select-option>
+          <ion-select-option value = "2">Salida</ion-select-option>
+        </ion-select>
+ -->
 
 
 

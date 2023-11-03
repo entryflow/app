@@ -3,6 +3,20 @@ import ApexCharts from 'apexcharts'
 import { Browser } from '@capacitor/browser';
 
 
+import {
+  AlertController,
+  ModalController,
+  LoadingController,
+  ToastController,
+} from '@ionic/angular';
+
+import { ModalCreateEmployeeComponent } from '../components/modal-create-employee/modal-create-employee.component';
+import { ModalEditEmployeeComponent } from '../components/modal-edit-employee/modal-edit-employee.component';
+import { ModalEditProfileComponent } from '../components/modal-edit-profile/modal-edit-profile.component';
+import { ModalViewEmployeeInfoComponent } from '../components/modal-view-employee-info/modal-view-employee-info.component';
+import { ApiService } from '../services/api.service';
+import { ModalRegEntryNExitComponent } from '../components/modal-reg-entry-n-exit/modal-reg-entry-n-exit.component';
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -11,11 +25,18 @@ import { Browser } from '@capacitor/browser';
 
 export class Tab1Page implements OnInit {
 
+  public is_register = false;
+
+
   public faltasData: any = [1, 32, 45, 32, 3, 52, 41];
   public aTiempoData: any = [119, 109, 129, 100, 101, 90, 109];
   public retardos: any = [31, 40, 28, 51, 42, 10, 1];
 
-  constructor(){}
+  constructor( private alertController: AlertController,
+    private modalController: ModalController,
+    private api: ApiService,
+    private LoadingController: LoadingController,
+    private toastController: ToastController){}
 
   ngOnInit(){
 
@@ -171,4 +192,34 @@ async ionViewWillEnter(){
 async openUrl(){
   await Browser.open({url: 'https://face-detection-server-gs2dvwxye-deventryflow-gmailcom.vercel.app/'});
 }
+
+  public alertButtons = [{'text': 'Cancelar', 'role': 'cancel'}, {'text': 'Aceptar', 'handler': () => {this.onModalCreate();}}];
+  public alertInputs = [
+    {
+      label: 'Entrada',
+      type: 'radio',
+      value: '1',
+    },
+    {
+      label: 'Salida',
+      type: 'radio',
+      value: '2',
+    },
+
+  ];
+
+
+  async onModalCreate(){
+    const modal = await this.modalController.create({
+      component: ModalRegEntryNExitComponent,
+      animated: true,
+      mode: 'ios',
+    });
+
+    await modal.present();
+
+    const { data } = await modal.onWillDismiss();
+  }
+
+
 }
