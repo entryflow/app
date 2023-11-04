@@ -6,14 +6,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" mode = "ios" class="ion-padding" >
+<ion-content [fullscreen]="true" mode = "ios">
 
- <div style="border: 1px solid #1B305B; border-radius: 10px; border-width: 2px; padding: 0;">
+ <div style="border: 1px solid #1B305B; border-radius: 10px; border-width: 2px; padding: 0; margin: 11px">
 
   <div color = "dark" style="text-align: center;" slot="end">
-    <ion-card-title style="text-align: center; color: #1B305B; font-size: 18px;">Faltas</ion-card-title>
-    <ion-item style="margin-left: 0; margin-top: 0px; padding: 0px;" lines = "none">
-    </ion-item>
+    <ion-card-subtitle style="text-align: center; color: #1B305B; font-size: 14px; margin: 0px; padding: 0px;">Faltas</ion-card-subtitle>
+    <ion-item style="margin-left: 0; margin-top: 0px; padding: 0px; margin: 0px; height: 0px; min-height: 0px;" lines = "none"></ion-item>
   </div>
 
  <ion-grid>
@@ -54,11 +53,10 @@
 </div>
 
 
-<div  style="border: 1px solid #1B305B; border-radius: 10px; border-width: 2px; padding: 0; margin-top: 5%; ">
+<div  style="border: 1px solid #1B305B; border-radius: 10px; border-width: 2px; padding: 0; margin-top: 5%; margin: 11px">
 
-  <ion-item style="margin-left: 0px; margin-top: 5px; padding: 0px;" lines = "none">
-      <ion-card-title style="text-align: center; color: #1B305B; font-size: 18px;">Faltas por día</ion-card-title>
-  </ion-item>
+  <ion-card-subtitle style="text-align: center; color: #1B305B; font-size: 14px;">Faltas por día</ion-card-subtitle>
+  <ion-item style="margin-left: 0; margin-top: 0px; padding: 0px; margin: 0px; height: 0px; min-height: 0px;" lines = "none"></ion-item>
 
   <div id="chartStack" class="chart"></div>
 

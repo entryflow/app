@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalRegEntryNExitComponent implements OnInit {
 
+  public started_register = false;
+
   video: any;
   canvas: any;
   cameraSelect: any;
@@ -34,6 +36,7 @@ export class ModalRegEntryNExitComponent implements OnInit {
   }
 
   startDetection() {
+    this.started_register = true;
     const deviceId = this.cameraSelect.selectedOptions[0].value;
     this.socket = this.startFaceDetection(this.video, this.canvas, deviceId);
   }

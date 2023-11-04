@@ -19,6 +19,7 @@ import { ModalEditEmployeeComponent } from './components/modal-edit-employee/mod
 import { ModalEditProfileComponent } from './components/modal-edit-profile/modal-edit-profile.component';
 import { ModalViewEmployeeInfoComponent } from './components/modal-view-employee-info/modal-view-employee-info.component';
 import { ModalRegEntryNExitComponent } from './components/modal-reg-entry-n-exit/modal-reg-entry-n-exit.component';
+import { ModalTestComponent } from './components/modal-test/modal-test.component';
 
 
 
@@ -31,7 +32,8 @@ import { ModalRegEntryNExitComponent } from './components/modal-reg-entry-n-exit
     ModalEditProfileComponent,
     ModalViewEmployeeInfoComponent,
     ModalCreateEmployeeComponent,
-    ModalRegEntryNExitComponent
+    ModalRegEntryNExitComponent,
+    ModalTestComponent
   ],
 
   imports: [

@@ -16,6 +16,7 @@ import { ModalEditProfileComponent } from '../components/modal-edit-profile/moda
 import { ModalViewEmployeeInfoComponent } from '../components/modal-view-employee-info/modal-view-employee-info.component';
 import { ApiService } from '../services/api.service';
 import { ModalRegEntryNExitComponent } from '../components/modal-reg-entry-n-exit/modal-reg-entry-n-exit.component';
+import { ModalTestComponent } from '../components/modal-test/modal-test.component';
 
 @Component({
   selector: 'app-tab1',
@@ -211,7 +212,7 @@ async openUrl(){
 
   async onModalCreate(){
     const modal = await this.modalController.create({
-      component: ModalRegEntryNExitComponent,
+      component: ModalTestComponent,
       animated: true,
       mode: 'ios',
     });
