@@ -8,30 +8,30 @@
 
 <ion-content [fullscreen]="true" mode = "ios">
 
- <div style="border: 1px solid #1B305B; border-radius: 10px; border-width: 2px; padding: 0; margin: 11px">
+ <div style="border: 1px solid #1B305B; border-radius: 10px; border-width: 2px; padding: 0; margin: 11px;">
 
   <div color = "dark" style="text-align: center;" slot="end">
-    <ion-card-subtitle style="text-align: center; color: #1B305B; font-size: 14px; margin: 0px; padding: 0px;">Faltas</ion-card-subtitle>
+    <ion-card-title style="text-align: center; color: #1B305B; font-size: 14px; margin: 0px; padding: 8px;">Estado de faltas</ion-card-title>
     <ion-item style="margin-left: 0; margin-top: 0px; padding: 0px; margin: 0px; height: 0px; min-height: 0px;" lines = "none"></ion-item>
   </div>
 
  <ion-grid>
 
-  <ion-row style="margin-top:5%; text-align: center; font-size: 14px; color:#ABB5BE; font-weight: 550;">
+  <ion-row style="margin-top:5%; text-align: center; font-size: 14px; color:#ABB5BE; font-weight: 550; margin-left: 0; margin-top: 0px; padding: 0px; margin: 0px; ">
 
-    <ion-col style="padding:0px; margin:0px;">
+    <ion-col style="padding:0px; margin:0px; margin-left: 0; margin-top: 0px; padding: 0px; margin: 0px; height: 0px; min-height: 0px;">
       <p style="padding:0px; margin:0px;">
         Este mes
       </p>
     </ion-col>
     <ion-col style=" padding:0px; margin:0px;">
       <p style=" padding:0px; margin:0px;">
-        Ultima semana
+        Última semana
       </p>
     </ion-col>
     <ion-col style=" padding:0px; margin:0px;">
       <p style=" padding:0px; margin:0px;">
-        Ultimo mes
+        Último mes
       </p>
     </ion-col>
   </ion-row>
@@ -50,15 +50,42 @@
 
 </ion-grid>
 
-</div>
 
 
-<div  style="border: 1px solid #1B305B; border-radius: 10px; border-width: 2px; padding: 0; margin-top: 5%; margin: 11px">
 
-  <ion-card-subtitle style="text-align: center; color: #1B305B; font-size: 14px;">Faltas por día</ion-card-subtitle>
+   <!-- <ion-card-subtitle style="text-align: center; color: #1B305B; font-size: 14px;">Faltas por día</ion-card-subtitle> -->
+  <ion-item  style="margin-left: 0; margin-top: 0px; padding: 0px; margin: 0px; height: 0px; min-height: 0px;" lines = "none"></ion-item>
+
+  <ion-card-title style="text-align: center; color: #1B305B; font-size: 14px; margin: 0px; padding: 8px;">Registros por día</ion-card-title>
   <ion-item style="margin-left: 0; margin-top: 0px; padding: 0px; margin: 0px; height: 0px; min-height: 0px;" lines = "none"></ion-item>
 
   <div id="chartStack" class="chart"></div>
+
+     <!-- <ion-card-subtitle style="text-align: center; color: #1B305B; font-size: 14px;">Faltas por día</ion-card-subtitle> -->
+     <ion-item  style="margin-left: 0; margin-top: 0px; padding: 0px; margin: 0px; height: 0px; min-height: 0px;" lines = "none"></ion-item>
+
+     <ion-card-title style="text-align: center; color: #1B305B; font-size: 14px; margin: 0px; padding: 8px;">Faltas por empleado</ion-card-title>
+     <ion-item style="margin-left: 0; margin-top: 0px; padding: 0px; margin: 0px; height: 0px; min-height: 0px;" lines = "none"></ion-item>
+
+
+
+        <ion-list class="Employee">
+          <ion-item style="margin-left: 0; margin-top: 0px; padding: 0px; margin: 0px;" lines="none">
+            <ion-avatar aria-hidden="true" slot="start">
+              <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+            </ion-avatar>
+          <ion-label style = "font-family: QuickSand; font-weight: 500;">Huey</ion-label>
+        </ion-item>
+
+        <ion-item  lines="none">
+          <ion-avatar aria-hidden="true" slot="start">
+            <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+        <ion-label style = "font-family: QuickSand; font-weight: 500;">Dewey</ion-label>
+        </ion-item>
+        </ion-list>
+
+
 
 </div>
 

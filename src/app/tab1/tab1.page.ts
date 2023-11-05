@@ -16,7 +16,6 @@ import { ModalEditProfileComponent } from '../components/modal-edit-profile/moda
 import { ModalViewEmployeeInfoComponent } from '../components/modal-view-employee-info/modal-view-employee-info.component';
 import { ApiService } from '../services/api.service';
 import { ModalRegEntryNExitComponent } from '../components/modal-reg-entry-n-exit/modal-reg-entry-n-exit.component';
-import { ModalTestComponent } from '../components/modal-test/modal-test.component';
 
 @Component({
   selector: 'app-tab1',
@@ -80,22 +79,6 @@ export class Tab1Page implements OnInit {
 
       background: {show: false},
 
-      animations: {
-        enabled: true,
-        easing: 'easeinout',
-        speed: 2000,
-
-        animateGradually: {
-            enabled: true,
-            delay: 150
-        },
-
-        dynamicAnimation: {
-            enabled: true,
-            speed: 3
-        },
-
-    },
 
     //  sparkline: {
     //    enabled: true
@@ -212,7 +195,7 @@ async openUrl(){
 
   async onModalCreate(){
     const modal = await this.modalController.create({
-      component: ModalTestComponent,
+      component: ModalRegEntryNExitComponent,
       animated: true,
       mode: 'ios',
     });

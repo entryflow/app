@@ -1,6 +1,28 @@
+.Employee{
+  border-bottom: 1px solid #ccc;
+  margin-left: 0px;
+  border-radius: 10px;
+  padding: 0px;
+}
+
 ion-item{
   border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
-  margin-left: 0px; padding: 10px;
+  margin-left: 0px;
+  padding: 0px;
+}
+
+.middleSeparator{
+  border-bottom: 2px solid #1B305B;
+  padding-bottom: 0px;
+  margin-left: 0px;
+  padding: 0px;
+}
+
+p{
+    color: #666666;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
 }
 

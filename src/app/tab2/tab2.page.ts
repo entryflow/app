@@ -304,14 +304,19 @@ export class Tab2Page {
     var stack = {
       series: [
         {
+          name: 'Faltas',
+          group: 'Faltas',
+          data: [2, 1, 3, 4, 5]
+        },
+        {
           name: 'Asistencias',
           group: 'Asistencias',
           data: [12, 10, 13, 14, 11],
         },
         {
-          name: 'Faltas',
-          group: 'Faltas',
-          data: [2, 1, 3, 4, 5]
+          name: 'Retardos',
+          group: 'Retardos',
+          data: [1, 3, 1, 2, 1]
         }
       ],
       stroke: {
@@ -347,7 +352,7 @@ export class Tab2Page {
           show: false
         },
       },
-      colors: ['#42F584', '#F54242'], // Aquí se agrega el color para las faltas
+      colors: [ '#F54242','#42F584', '#f5a742'], // Aquí se agrega el color para las faltas
       fill: {
         colors: undefined,
         opacity: 0.3,
