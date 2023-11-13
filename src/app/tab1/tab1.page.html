@@ -1,81 +1,82 @@
 <ion-header [translucent]="false" mode="ios">
-    <ion-toolbar>
-      <ion-title>
-        Inicio
-      </ion-title>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>
+      Inicio
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" mode="ios">
 
-  <ion-card class="homeBorder" >
+<ion-card class="homeBorder" >
 
-    <ion-card-header class="homeCardHeader">
+  <ion-card-header class="homeCardHeader">
 
-      <ion-card-title style="text-align: center;">11,200</ion-card-title>
-      <ion-card-subtitle style="text-align: center;">Registro de entradas</ion-card-subtitle>
+    <ion-card-title style="text-align: center;">11,200</ion-card-title>
+    <ion-card-subtitle style="text-align: center;">Registro de entradas</ion-card-subtitle>
 
-    </ion-card-header>
+  </ion-card-header>
 
 
-    <ion-card-content class="homeCardContent">
+  <ion-card-content class="homeCardContent">
 
-      <ion-grid style="margin-top: 1%;">
-        <ion-row>
-          <ion-col class="entryData">
-            1119s
-          </ion-col >
-          <ion-col class="entryData">
-            9980
+    <ion-grid style="margin-top: 1%;">
+      <ion-row>
+        <ion-col class="entryData">
+          1119s
+        </ion-col >
+        <ion-col class="entryData">
+          9980
+        </ion-col>
+        <ion-col class="entryData">
+          980
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+    <ion-grid style="margin-bottom: 1%;">
+      <ion-row>
+          <ion-col class="labelData">
+            Faltas
           </ion-col>
-          <ion-col class="entryData">
-            980
+          <ion-col class="labelData">
+            A tiempo
           </ion-col>
-        </ion-row>
+          <ion-col class="labelData">
+            Tarde
+          </ion-col>
+      </ion-row>
 
-      </ion-grid>
+    </ion-grid>
 
-      <ion-grid style="margin-bottom: 1%;">
-        <ion-row>
-            <ion-col class="labelData">
-              Faltas
-            </ion-col>
-            <ion-col class="labelData">
-              A tiempo
-            </ion-col>
-            <ion-col class="labelData">
-              Tarde
-            </ion-col>
-        </ion-row>
+  </ion-card-content>
 
-      </ion-grid>
+</ion-card>
 
-    </ion-card-content>
+<div id="chart0" class="chart chartBorder"></div>
 
-  </ion-card>
+<!--boton de editar perfil-->
+<ion-button
+class="Button homeBorder"
+fill="clear"
+expand="block"
+id="present-alert"
+(click)="authenticate()"
+>
+<ion-icon slot="end" class="ButtonIcon" name="play-skip-forward-circle-outline" size="large"></ion-icon>
+<div class="ButtonText">
+  <ion-text >Empezar a registrar<br>
+     entradas/salidas</ion-text>
+</div>
+</ion-button>
 
-  <div id="chart0" class="chart chartBorder"></div>
-
-  <!--boton de editar perfil-->
-    <ion-button
-    class="Button homeBorder"
-    fill="clear"
-    expand="block"
-    id="present-alert"
-    >
-    <ion-icon slot="end" class="ButtonIcon" name="play-skip-forward-circle-outline" size="large"></ion-icon>
-    <div class="ButtonText">
-      <ion-text >Empezar a registrar<br>
-         entradas/salidas</ion-text>
-    </div>
-    </ion-button>
-
-    <ion-alert
-      trigger="present-alert"
-      header="Registrar"
-      [buttons]="alertButtons"
-      [inputs]="alertInputs"
-    ></ion-alert>
+  <ion-alert
+    trigger="present-alert"
+    header="Registrar"
+    [buttons]="alertButtons"
+    [inputs]="alertInputs"
+  ></ion-alert>
 
 
 </ion-content>

@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import ApexCharts from 'apexcharts'
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+
 import { Browser } from '@capacitor/browser';
 
 
@@ -8,6 +10,7 @@ import {
   ModalController,
   LoadingController,
   ToastController,
+  Platform,
 } from '@ionic/angular';
 
 import { ModalCreateEmployeeComponent } from '../components/modal-create-employee/modal-create-employee.component';
@@ -26,6 +29,7 @@ import { ModalRegEntryNExitComponent } from '../components/modal-reg-entry-n-exi
 export class Tab1Page implements OnInit {
 
   public is_register = false;
+  private faio! : FingerprintAIO;
 
 
   public faltasData: any = [1, 32, 45, 32, 3, 52, 41];
@@ -36,7 +40,13 @@ export class Tab1Page implements OnInit {
     private modalController: ModalController,
     private api: ApiService,
     private LoadingController: LoadingController,
-    private toastController: ToastController){}
+    private toastController: ToastController,
+    private platform: Platform
+    ){
+      if(this.platform.is('cordova')){
+        this.faio = new FingerprintAIO();
+      }
+    }
 
   ngOnInit(){
 
@@ -171,6 +181,27 @@ export class Tab1Page implements OnInit {
 
 async ionViewWillEnter(){
 
+}
+
+async authenticate() {
+  try {
+    const available = await this.faio.isAvailable();
+  
+    if (available === "finger" || available === "face") {
+      await this.faio.show({
+        title: 'Autenticación',
+        subtitle: 'Autenticación requerida',
+        description: 'Por favor, autentícate',
+        fallbackButtonTitle: 'Usar PIN',
+        disableBackup: true
+      });
+      // Autenticación exitosa, puedes empezar a registrar entradas/salidas aquí
+    } else {
+      // Redirige al usuario a otra página si FaceID o huella digital no están disponibles
+    }
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 async openUrl(){
