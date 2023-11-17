@@ -64,27 +64,26 @@
      <!-- <ion-card-subtitle style="text-align: center; color: #1B305B; font-size: 14px;">Faltas por día</ion-card-subtitle> -->
      <ion-item  style="margin-left: 0; margin-top: 0px; padding: 0px; margin: 0px; height: 0px; min-height: 0px;" lines = "none"></ion-item>
 
-     <ion-card-title style="text-align: center; color: #1B305B; font-size: 14px; margin: 0px; padding: 8px;">Faltas por empleado</ion-card-title>
+     <ion-card-title style="text-align: center; color: #1B305B; font-size: 14px; margin: 0px; padding: 8px;">Asistencias por empleado</ion-card-title>
      <ion-item style="margin-left: 0; margin-top: 0px; padding: 0px; margin: 0px; height: 0px; min-height: 0px;" lines = "none"></ion-item>
 
 
 
         <ion-list class="Employee">
+
+        <div *ngFor="let employee of employees">
+
           <ion-item style="margin-left: 0; margin-top: 0px; padding: 0px; margin: 0px;" lines="none">
             <ion-avatar aria-hidden="true" slot="start">
-              <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+              <img alt="" src="{{employee.avatar}}" />
             </ion-avatar>
-          <ion-label style = "font-family: QuickSand; font-weight: 500;">Huey</ion-label>
-          <ion-label slot="end" style = "font-family: QuickSand; font-weight: 500;">1</ion-label>
+          <ion-label style = "font-family: QuickSand; font-weight: 500;">{{employee.name}} {{employee.middle_name}} {{employee.last_name}}</ion-label>
+          <ion-label slot="end" style = "font-family: QuickSand; font-weight: 500;">{{employee.total_ins}}</ion-label>
         </ion-item>
 
-        <ion-item  lines="none">
-          <ion-avatar aria-hidden="true" slot="start">
-            <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-          </ion-avatar>
-        <ion-label style = "font-family: QuickSand; font-weight: 500;">Dewey</ion-label>
-        <ion-label slot="end" style = "font-family: QuickSand; font-weight: 500;">2</ion-label>
-        </ion-item>
+        </div>
+
+
         </ion-list>
 
 

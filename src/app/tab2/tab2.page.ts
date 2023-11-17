@@ -1,6 +1,14 @@
 import { Component } from '@angular/core'
 import ApexCharts from 'apexcharts'
 import { ChartComponent } from 'ng-apexcharts';
+import { ApiService } from '../services/api.service';
+
+import {
+  AlertController,
+  ModalController,
+  LoadingController,
+  ToastController,
+} from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -13,8 +21,36 @@ export class Tab2Page {
   chartSize = 110;
   chartFontSize = '100b';
 
-  constructor()
+  employees: any = [];
+
+  constructor(
+    private alertController: AlertController,
+    private modalController: ModalController,
+    private api: ApiService,
+    private LoadingController: LoadingController,
+    private toastController: ToastController
+  )
   {}
+
+  async refreshEmployees() {
+
+    this.employees = await this.api.getEmployeesRecord();
+    console.log(this.employees)
+  }
+
+
+  async ionViewWillEnter() {
+
+    const loading = await this.LoadingController.create({
+      message: 'Cargando...',
+      mode: 'ios',
+    }).then(async (loadingElement) => {
+      loadingElement.present();
+      this.refreshEmployees();
+      loadingElement.dismiss();
+    });
+
+  }
 
   ngOnInit() {
 

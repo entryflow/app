@@ -65,6 +65,19 @@ export class ApiService {
     return data;
   }
 
+  async getEmployeesRecord() {
+    let data = [];
+    const options = {
+      url: this.API_URL + 'employes/records',
+    };
+
+    const response = await CapacitorHttp.request({ ...options, method: 'GET' });
+    for (let i = 0; i < response.data.length; i++) {
+      data.push(response.data[i]);
+    }
+    return data;
+  }
+
   async deleteEmployees(id: any) {
     const options = {
       url: this.API_URL + 'employees/' + id,

@@ -176,28 +176,32 @@ async ionViewWillEnter(){
 async openUrl(){
   await Browser.open({url: 'https://face-detection-server-gs2dvwxye-deventryflow-gmailcom.vercel.app/'});
 }
-
-  public alertButtons = [{'text': 'Cancelar', 'role': 'cancel'}, {'text': 'Aceptar', 'handler': () => {this.onModalCreate();}}];
   public alertInputs = [
     {
-      label: 'Entrada',
+      label: 'Entradas',
       type: 'radio',
       value: '1',
     },
     {
-      label: 'Salida',
+      label: 'Salidas',
       type: 'radio',
       value: '2',
     },
 
   ];
 
+  public alertButtons = [{'text': 'Cancelar', 'role': 'cancel'}, {'text': 'Aceptar', 'handler': (value:any) => {this.onModalCreate(value);}}];
 
-  async onModalCreate(){
+
+
+  async onModalCreate(value:any){
     const modal = await this.modalController.create({
       component: ModalRegEntryNExitComponent,
       animated: true,
       mode: 'ios',
+      componentProps:{
+        num: value
+      }
     });
 
     await modal.present();

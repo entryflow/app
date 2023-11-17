@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import	{	ModalController	}	from	'@ionic/angular';
+
+import {FormBuilder,FormControl,Validators,FormArray} from '@angular/forms';
 
 @Component({
   selector: 'app-modal-reg-entry-n-exit',
@@ -8,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class ModalRegEntryNExitComponent implements OnInit {
 
   public started_register = false;
-
+  public num:any;
   video: any;
   canvas: any;
   cameraSelect: any;
@@ -16,7 +19,12 @@ export class ModalRegEntryNExitComponent implements OnInit {
   intervalId: any;
   IMAGE_INTERVAL_MS: number = 42;
 
+  constructor(private formBuilder:FormBuilder, private modalCtrl:ModalController){
+
+  }
+
   ngOnInit() {
+    console.log(this.num)
     // Inicializar lógica aquí si es necesario al cargar la página.
     this.video = document.getElementById('video');
     this.canvas = document.getElementById('canvas');
@@ -57,7 +65,7 @@ export class ModalRegEntryNExitComponent implements OnInit {
   }
 
   startFaceDetection(video: any, canvas: any, deviceId: string) {
-    const socket = new WebSocket('wss://entryflow-api.redirectme.net:443/face-detection/1');
+    const socket = new WebSocket('wss://entryflow-api.redirectme.net:443/face-detection/'+this.num);
 
   if (socket) {
     // Connection opened
@@ -103,7 +111,9 @@ export class ModalRegEntryNExitComponent implements OnInit {
 
     // Escuchar mensajes
     socket.addEventListener('message', (event) => {
+      console.log(event.data)
       if (canvas) {
+
         this.drawFaceRectangles(video, canvas, JSON.parse(event.data));
       }
     });
@@ -120,6 +130,11 @@ export class ModalRegEntryNExitComponent implements OnInit {
   }
 
   return socket;
+}
+
+cancel() {
+  this.modalCtrl.dismiss(null, 'cancel');
+
 }
 
 }
