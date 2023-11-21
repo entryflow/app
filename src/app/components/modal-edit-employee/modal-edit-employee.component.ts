@@ -33,9 +33,10 @@ export class ModalEditEmployeeComponent  implements OnInit {
 
   constructor(private modalCtrl:ModalController, private formBuilder:FormBuilder) {
 
-   }
+  }
 
   onlyLetters =  Validators.pattern(/^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$/);
+
   credentials: any;
 
   get email() {
@@ -70,12 +71,12 @@ export class ModalEditEmployeeComponent  implements OnInit {
 
   async takePicture() {
     try{
+
       const image = await Camera.getPhoto({
         quality: 100,
         presentationStyle: 'fullscreen',
         resultType: CameraResultType.DataUrl
       });
-
 
       this.selectedImageDataUrl = image.dataUrl;
 
@@ -103,7 +104,9 @@ export class ModalEditEmployeeComponent  implements OnInit {
   }
 
   async confirm() {
+
     let data: any = [];
+
     data['email'] = this.credentials.value['email'];
     data['name'] = this.credentials.value['name'];
     data['middle_name'] = this.credentials.value['middle_name'];
@@ -148,13 +151,12 @@ export class ModalEditEmployeeComponent  implements OnInit {
 
     }
 
-
-
     this.modalCtrl.dismiss(data, 'confirm');
   }
 
   async loadImageFromUrlAndConvertToBlob(imageUrl: string): Promise<File | null> {
     try {
+
       // Realizar una solicitud HTTP para obtener la imagen desde la URL
       const response = await fetch(imageUrl);
 
@@ -174,6 +176,7 @@ export class ModalEditEmployeeComponent  implements OnInit {
       const fileBlob = new File([imageBlob], fileName, { type: 'image/jpeg' });
 
       return fileBlob;
+
     } catch (error) {
       console.error('Error al cargar la imagen:', error);
       return null; // Devolver null en caso de error

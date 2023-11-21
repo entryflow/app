@@ -205,13 +205,13 @@ export class Tab3Page {
           position: 'top',
           animated: true,
         });
+
         await this.refreshEmployees();
 
         await toast.present();
         loadingElement.dismiss();
       });
     }
-
 
   }
 

@@ -1,3 +1,4 @@
+import { ModalRegEntryNExitComponent } from './../components/modal-reg-entry-n-exit/modal-reg-entry-n-exit.component';
 import { Component, OnInit} from '@angular/core';
 import ApexCharts from 'apexcharts'
 import { Browser } from '@capacitor/browser';
@@ -15,7 +16,6 @@ import { ModalEditEmployeeComponent } from '../components/modal-edit-employee/mo
 import { ModalEditProfileComponent } from '../components/modal-edit-profile/modal-edit-profile.component';
 import { ModalViewEmployeeInfoComponent } from '../components/modal-view-employee-info/modal-view-employee-info.component';
 import { ApiService } from '../services/api.service';
-import { ModalRegEntryNExitComponent } from '../components/modal-reg-entry-n-exit/modal-reg-entry-n-exit.component';
 
 @Component({
   selector: 'app-tab1',
@@ -193,7 +193,6 @@ async openUrl(){
   public alertButtons = [{'text': 'Cancelar', 'role': 'cancel'}, {'text': 'Aceptar', 'handler': (value:any) => {this.onModalCreate(value);}}];
 
 
-
   async onModalCreate(value:any){
     const modal = await this.modalController.create({
       component: ModalRegEntryNExitComponent,
@@ -207,6 +206,27 @@ async openUrl(){
     await modal.present();
 
     const { data } = await modal.onWillDismiss();
+
+    if (data) {
+      const loading = await this.LoadingController.create({
+        message: 'Cargando...',
+        mode: 'ios',
+      }).then(async (loadingElement) => {
+        loadingElement.present();
+
+        const toast = await this.toastController.create({
+          message: 'Empleado registrado correctamente',
+          duration: 2000,
+          mode: 'ios',
+          color: 'success',
+          position: 'top',
+          animated: true,
+        });
+        await toast.present();
+        loadingElement.dismiss();
+      });
+    }
+
   }
 
 

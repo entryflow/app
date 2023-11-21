@@ -68,7 +68,7 @@ export class ApiService {
   async getEmployeesRecord() {
     let data = [];
     const options = {
-      url: this.API_URL + 'employes/records',
+      url: this.API_URL + 'records',
     };
 
     const response = await CapacitorHttp.request({ ...options, method: 'GET' });
@@ -132,15 +132,11 @@ export class ApiService {
 
     try {
       const response = await this.http.post(`${this.API_URL}employees`, body, { params }).toPromise();
-
-
       return response;
     } catch (error) {
       console.error('An error occurred:', error);
       throw error; // You can handle or rethrow the error as needed
     }
-
-
 
   }
 
@@ -165,11 +161,44 @@ export class ApiService {
     const body = new FormData();
     body.append('image', data.image);
 
+    console.log(data.birth_date)
     console.log(data);
     console.log(params);
 
     try {
       const response = await this.http.put(`${this.API_URL}employees/${employeeID}`, body, { params }).toPromise();
+      console.log(response);
+      console.log(data);
+      return response;
+    } catch (error) {
+      console.error('An error occurred:', error);
+      throw error; // You can handle or rethrow the error as needed
+    }
+
+
+  }
+
+  async updateProfile(data: any) {
+
+    //numero de la compañia
+    let id: number = 1;
+
+    const params = new HttpParams()
+    .set('user_id', data.id)
+    .set('name', data.name)
+    .set('middle_name', data.middle_name)
+    .set('last_name', data.last_name)
+    .set('email', data.email)
+
+    const body = new FormData();
+    body.append('image', data.image);
+
+    console.log(data.birth_date)
+    console.log(data);
+    console.log(params);
+
+    try {
+      const response = await this.http.put(`${this.API_URL}users/me`, body, { params }).toPromise();
       console.log(response);
       console.log(data);
       return response;

@@ -4,6 +4,8 @@ import { ModalEditProfileComponent } from '../components/modal-edit-profile/moda
 import { ApiService } from '../services/api.service';
 import { Router } from '@angular/router';
 
+
+
 import {
   ToastController,
 } from '@ionic/angular';
@@ -24,14 +26,15 @@ export class Tab4Page implements OnInit {
     private modalController:ModalController,
     private api:ApiService,
     private router:Router,
-    private loadingController:LoadingController
+    private loadingController:LoadingController,
+    private toastController: ToastController
 
     )
   {}
 
   ngOnInit() {}
 
-  ionViewWillEnter(){
+  async ionViewWillEnter(){
 
     this.profile = [];
 
@@ -42,7 +45,16 @@ export class Tab4Page implements OnInit {
 
       loadingElement.present();
 
-      let token:any = await this.api.getToken();
+      this.refreshProfile();
+
+      loadingElement.dismiss();
+
+    });
+
+  }
+
+  async refreshProfile(){
+    let token:any = await this.api.getToken();
 
       this.profile = await this.api.getUserInfo(token);
 
@@ -51,11 +63,6 @@ export class Tab4Page implements OnInit {
       this.profile.company = this.profile.company.name;
 
       console.log(this.profile);
-
-      loadingElement.dismiss();
-
-    });
-
   }
 
   async onAlert(){
@@ -76,24 +83,58 @@ export class Tab4Page implements OnInit {
       mode:'ios'
     });
 
+
+
     await alert.present();
+
   }
 
   async onModalEdit(){
+
     const modal = await this.modalController.create({
       component: ModalEditProfileComponent,
       mode:'ios',
       componentProps: {
+        profileId: this.profile.id,
         profileName: this.profile.name,
         profileMiddleName: this.profile.middle_name,
         profileLastName: this.profile.last_name,
         profileEmail: this.profile.email,
-        profileAvatar: this.profile.avatar
+        profileAvatar: this.profile.avatar,
+
       }
 
     });
 
-    return await modal.present();
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+
+    if (data) {
+      const loading = await this.loadingController.create({
+        message: 'Cargando...',
+        mode: 'ios',
+      }).then(async (loadingElement) => {
+        loadingElement.present();
+        await this.api.updateProfile(data);
+        const toast = await this.toastController.create({
+          message: 'Perfil editado correctamente',
+          duration: 2000,
+          mode: 'ios',
+          color: 'success',
+          position: 'top',
+          animated: true,
+        });
+
+        await this.refreshProfile();
+
+        await toast.present();
+
+        loadingElement.dismiss();
+
+      });
+    }
+
   }
 
   async logout(){
@@ -108,8 +149,6 @@ export class Tab4Page implements OnInit {
     });
 
   }
-
-
 
 
 
