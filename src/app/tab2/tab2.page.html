@@ -73,11 +73,11 @@
 
         <div *ngFor="let employee of employees">
 
-          <ion-item style="margin-left: 0; margin-top: 0px; padding: 0px; margin: 0px;" lines="none">
+        <ion-item style="margin-left: 0; margin-top: 0px; padding: 0px; margin: 0px;" lines="none">
             <ion-avatar aria-hidden="true" slot="start">
               <img alt="" src="{{employee.avatar}}" />
             </ion-avatar>
-          <ion-label style = "font-family: QuickSand; font-weight: 500;">{{employee.name}} {{employee.middle_name}} {{employee.last_name}}</ion-label>
+          <ion-label style = "font-family: QuickSand; font-weight: 500;">{{employee.name}}</ion-label>
           <ion-label slot="end" style = "font-family: QuickSand; font-weight: 500;">{{employee.total_ins}}</ion-label>
         </ion-item>
 
