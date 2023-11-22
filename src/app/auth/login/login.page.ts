@@ -88,32 +88,36 @@ export class LoginPage implements OnInit {
       mode:'ios'
     }).then(async (loadingElement) => {
       loadingElement.present();
-
-    try{
-      const data:any = await this.api.login(this.credentials.value);
-      console.log(data);
-      if(data.access_token){
-        await this.api.setToken(data.access_token);
-        this.router.navigateByUrl('/tabs/tab1', { replaceUrl: true });
+  
+      try{
+        const timeout = new Promise((resolve, reject) => {
+          setTimeout(reject, 5000, 'No se obtuvo comunicación con el servidor');
+        });
+        const data:any = await Promise.race([this.api.login(this.credentials.value), timeout]);
+        console.log(data);
+        if(data.access_token){
+          await this.api.setToken(data.access_token);
+          this.router.navigateByUrl('/tabs/tab1', { replaceUrl: true });
+        }
+      } catch(error){
+        console.log(error);
+        let message = 'Usuario o contraseña incorrectos';
+        if (error === 'No se obtuvo comunicación con el servidor') {
+          message = error;
+        }
+        this.toastController.create({
+          message: message,
+          duration: 2000,
+          mode:'ios',
+          color:'danger',
+          position:'top',
+          animated:true
+        }).then((toast) => {
+          toast.present();
+        });
       }
-    } catch(error){
-      console.log(error);
-      this.toastController.create({
-        message: 'Usuario o contraseña incorrectos',
-        duration: 2000,
-        mode:'ios',
-        color:'danger',
-        position:'top',
-        animated:true
-      }).then((toast) => {
-        toast.present();
-      });
-    }
       loadingElement.dismiss();
     });
-
-
-
   }
 
 
