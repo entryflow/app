@@ -19,6 +19,9 @@ import { ModalEditProfileComponent } from '../components/modal-edit-profile/moda
 import { ModalViewEmployeeInfoComponent } from '../components/modal-view-employee-info/modal-view-employee-info.component';
 import { ApiService } from '../services/api.service';
 import { ModalRegEntryNExitComponent } from '../components/modal-reg-entry-n-exit/modal-reg-entry-n-exit.component';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CapacitorHttp } from '@capacitor/core';
+import { Preferences } from '@capacitor/preferences';
 
 @Component({
   selector: 'app-tab1',
@@ -30,7 +33,7 @@ export class Tab1Page implements OnInit {
 
   public is_register = false;
   private faio! : FingerprintAIO;
-
+  API_URL = 'http://172.16.2.235:8000/';
 
   public faltasData: any = [1, 32, 45, 32, 3, 52, 41];
   public aTiempoData: any = [119, 109, 129, 100, 101, 90, 109];
@@ -41,7 +44,7 @@ export class Tab1Page implements OnInit {
     private api: ApiService,
     private LoadingController: LoadingController,
     private toastController: ToastController,
-    private platform: Platform
+    private platform: Platform,private http: HttpClient
     ){
       if(this.platform.is('cordova')){
         this.faio = new FingerprintAIO();
@@ -183,24 +186,73 @@ async ionViewWillEnter(){
 
 }
 
-async authenticate() {
+async getToken() {
+  let data: any = [];
+  await Preferences.get({ key: 'token' }).then((res) => {
+    data = res.value;
+  });
+
+  return data;
+}
+
+async getUserInfo(token:any) {
+  let data: any = [];
+  const options = {
+    url: this.API_URL + 'token',
+    params: { token: token },
+  };
+
+  const response = await CapacitorHttp.request({
+    ...options,
+    method: 'GET',
+  }).then((res) => {
+    data = res.data;
+  });
+
+  return data;
+
+}
+
+async registerData(user_id : any, type : any) {
+  let data_tmp: any = [];
+
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/x-www-form-urlencoded'
+  });
+
+  const body = `user_id=${user_id}`;
   try {
-    const available = await this.faio.isAvailable();
-  
-    if (available === "finger" || available === "face") {
-      await this.faio.show({
-        title: 'Autenticación',
-        subtitle: 'Autenticación requerida',
-        description: 'Por favor, autentícate',
-        fallbackButtonTitle: 'Usar PIN',
-        disableBackup: true
-      });
-      // Autenticación exitosa, puedes empezar a registrar entradas/salidas aquí
-    } else {
-      // Redirige al usuario a otra página si FaceID o huella digital no están disponibles
-    }
+    const response = await this.http.post(`${this.API_URL}registerUserEntry`, body, { headers }).toPromise();
+
+    return response;
   } catch (error) {
-    console.error(error);
+    console.error('An error occurred:', error);
+    throw error; // You can handle or rethrow the error as needed
+  }
+}
+
+async authenticate() {
+  if(this.platform.is('cordova')){
+    try {
+      const available = await this.faio.isAvailable();
+      if (available === "finger" || available === "face") {
+        await this.faio.show({
+          title: 'Autenticación',
+          subtitle: 'Autenticación requerida',
+          description: 'Por favor, autentícate',
+          fallbackButtonTitle: 'Usar PIN',
+          disableBackup: true
+        });
+        let jsonData = await this.getUserInfo(await this.getToken());
+        let user_id = jsonData.user.id;
+        // Autenticación exitosa, puedes empezar a registrar entradas/salidas aquí
+        this.registerData(user_id, 1);
+      } else {
+        // Redirige al usuario a otra página si FaceID o huella digital no están disponibles
+      }
+    } catch (error) {
+      console.error("errn: " + error);
+    }
   }
 }
 
